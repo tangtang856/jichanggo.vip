@@ -269,415 +269,6 @@ const airports = [
     "rank": 3
   },
   {
-    "id": "wuyou",
-    "name": "无忧",
-    "slug": "wuyou",
-    "tagline": "IPLC 国际专线 · 100GB/月稳定高可用与 20 元内品质标杆",
-    "description": "无忧（无忧链接）主打稳定可靠的 IPLC 内网专线节点，为轻中度办公与学术研究提供低延迟、防丢包的纯净连接。月付仅需 19 元即可享受 100GB 专线流量，是预算在 20 元以内的品质专线标杆。",
-    "officialUrl": "https://wep01.worryfreeaff.com/#/?code=oGi9FQ0J",
-    "affiliateUrl": "https://wep01.worryfreeaff.com/#/?code=oGi9FQ0J",
-    "startingPrice": 19,
-    "currency": "CNY",
-    "billingUnit": "月",
-    "coupon": "wuyou666",
-    "plans": [
-      {
-        "name": "IPLC 实用月付",
-        "price": 19,
-        "billingCycle": "月付",
-        "trafficGB": 100,
-        "effectiveTrafficGB": 100,
-        "multiplierNote": "1.0x 标准计费",
-        "unitPricePerGB": 0.19,
-        "features": [
-          "IPLC 内网专线",
-          "100GB 月度可用",
-          "支持优惠码立减",
-          "多协议支持"
-        ]
-      }
-    ],
-    "protocols": [
-      "Shadowsocks",
-      "Trojan",
-      "Vmess"
-    ],
-    "regions": [
-      "香港",
-      "台湾",
-      "日本",
-      "新加坡",
-      "美国"
-    ],
-    "nodeCount": "45+",
-    "lineType": "IPLC",
-    "deviceLimit": "3 - 5 台",
-    "speedGuarantee": "500Mbps 峰值",
-    "aiSupport": [
-      "ChatGPT",
-      "Claude",
-      "Gemini"
-    ],
-    "streamingSupport": [
-      "Netflix",
-      "Disney+",
-      "YouTube 4K"
-    ],
-    "advantages": [
-      "19 元超亲民月付价格即可上车 IPLC 专线",
-      "专属优惠券 wuyou666 可享进一步优惠",
-      "节点连接稳定，敏感时期不易失联",
-      "配置清晰，支持常用全套客户端一键导入"
-    ],
-    "disadvantages": [
-      "100GB 流量对超重度下载用户略显紧凑",
-      "主要精选核心亚太节点，节点数量中等"
-    ],
-    "suitableFor": [
-      "预算在 20 元以内且追求专线质量的用户",
-      "轻中度日常办公学习与外贸往来",
-      "需要稳定翻墙备用通道的用户"
-    ],
-    "sources": [
-      "jiediantuijian.shop 平台实测数据",
-      "晚高峰延迟复测"
-    ],
-    "lastVerified": "2026-03-12",
-    "testStatus": "tested",
-    "overallScore": 9.5,
-    "stabilityScore": 9.4,
-    "valueScore": 9.3,
-    "speedScore": 9.2,
-    "rank": 4
-  },
-  {
-    "id": "lingmao",
-    "name": "灵猫",
-    "slug": "lingmao",
-    "tagline": "IPLC 专线网络 · 150GB 大流量与 4K 流媒体优化",
-    "description": "灵猫专注于高品质 IPLC 专线网络加速，节点覆盖亚太热门区域，全节点解锁 Netflix 与 Disney+，晚高峰稳定无缓冲。资费 25 元/月给到 150GB 真实流量，单 GB 仅 0.167 元，深受办公白领与高清追剧族的喜爱。",
-    "officialUrl": "https://vip02.civetaff.com/#/?code=SXY8qyrG",
-    "affiliateUrl": "https://vip02.civetaff.com/#/?code=SXY8qyrG",
-    "startingPrice": 25,
-    "currency": "CNY",
-    "billingUnit": "月",
-    "plans": [
-      {
-        "name": "IPLC 白领月付",
-        "price": 25,
-        "billingCycle": "月付",
-        "trafficGB": 150,
-        "effectiveTrafficGB": 150,
-        "multiplierNote": "1.0x 标准计费",
-        "unitPricePerGB": 0.167,
-        "features": [
-          "IPLC 内网专线",
-          "150GB 大额月度配额",
-          "流媒体 4K 全解锁",
-          "三网智能路由"
-        ]
-      }
-    ],
-    "protocols": [
-      "Shadowsocks",
-      "Trojan"
-    ],
-    "regions": [
-      "香港",
-      "台湾",
-      "日本",
-      "新加坡",
-      "美国",
-      "英国"
-    ],
-    "nodeCount": "50+",
-    "lineType": "IPLC",
-    "deviceLimit": "4 台",
-    "speedGuarantee": "800Mbps 专线",
-    "aiSupport": [
-      "ChatGPT",
-      "Claude",
-      "Midjourney"
-    ],
-    "streamingSupport": [
-      "Netflix 全区",
-      "Disney+",
-      "YouTube 4K/8K",
-      "Spotify"
-    ],
-    "advantages": [
-      "IPLC 专线全内网传输，晚高峰无卡顿断流现象",
-      "150GB 实用月度配额，单 GB 成本 0.167 元，定价公道",
-      "流媒体 4K 播放深度优化，大码率秒开无缓冲圈",
-      "工单响应及时，节点维护更新频次高"
-    ],
-    "disadvantages": [
-      "设备连接数限制 4 台，超量设备需另行选购",
-      "无低于 20 元的微型迷你套餐"
-    ],
-    "suitableFor": [
-      "对稳定性有较高要求的白领与办公人员",
-      "4K 流媒体剧迷与视频重度用户",
-      "需要长期可靠外网连接的职场人士"
-    ],
-    "sources": [
-      "jiediantuijian.shop 平台实测数据",
-      "多地流媒体解锁复核记录"
-    ],
-    "lastVerified": "2026-03-12",
-    "testStatus": "tested",
-    "overallScore": 9.5,
-    "stabilityScore": 9.5,
-    "valueScore": 9.1,
-    "speedScore": 9.3,
-    "rank": 5
-  },
-  {
-    "id": "flashleap",
-    "name": "闪跃 FlashLeap",
-    "slug": "flashleap",
-    "tagline": "IPLC 纯专线保障 · 150GB 大流量与超低网络抖动",
-    "description": "闪跃 FlashLeap 采用高规格 IPLC 纯内网专线传输，端到端延迟极低且几乎零丢包。全网针对外服联机竞技、即时通讯与跨国交互做了底层优化，配备 150GB 充足流量，对晚高峰稳定性和网络抖动极其敏感的极客与玩家来说是不二之选。",
-    "officialUrl": "https://vip02.flashleapaff.com/#/?code=8ZIV6HQ3",
-    "affiliateUrl": "https://vip02.flashleapaff.com/#/?code=8ZIV6HQ3",
-    "startingPrice": 24,
-    "currency": "CNY",
-    "billingUnit": "月",
-    "coupon": "shanyue",
-    "plans": [
-      {
-        "name": "IPLC 极速月付",
-        "price": 24,
-        "billingCycle": "月付",
-        "trafficGB": 150,
-        "effectiveTrafficGB": 150,
-        "multiplierNote": "全节点 1.0x 诚实计费",
-        "unitPricePerGB": 0.16,
-        "features": [
-          "IPLC 纯内网点对点",
-          "超低延迟联机优化",
-          "150GB 纯高速流量",
-          "支持多端极速分流"
-        ]
-      }
-    ],
-    "protocols": [
-      "Shadowsocks",
-      "Trojan",
-      "VLESS"
-    ],
-    "regions": [
-      "香港",
-      "台湾",
-      "日本",
-      "新加坡",
-      "美国",
-      "英国"
-    ],
-    "nodeCount": "60+",
-    "lineType": "IPLC纯专线",
-    "deviceLimit": "4 - 6 台",
-    "speedGuarantee": "1000Mbps 专线",
-    "aiSupport": [
-      "ChatGPT",
-      "Claude",
-      "Cursor",
-      "Midjourney"
-    ],
-    "streamingSupport": [
-      "Netflix",
-      "Disney+",
-      "YouTube 4K/8K",
-      "Spotify"
-    ],
-    "advantages": [
-      "IPLC 纯专线网络架构，晚高峰丢包率低于 0.1%，延迟极度平稳",
-      "专为外服联机与即时通讯优化，操作响应迅速无卡顿感",
-      "单 GB 折算仅 0.16 元，在纯 IPLC 梯子中性价比突出",
-      "专属折扣券 shanyue 享受立减特权"
-    ],
-    "disadvantages": [
-      "月付起步门槛 24 元，不支持几元钱的极低微量月付",
-      "节点主要覆盖亚太核心地区，缺少极小众国家"
-    ],
-    "suitableFor": [
-      "外服联机游戏玩家",
-      "对延迟与晚高峰稳定性极度敏感者",
-      "跨国视频会议与即时办公人员"
-    ],
-    "sources": [
-      "jiediantuijian.shop 官方评测报告",
-      "编辑部延迟抖动测速数据"
-    ],
-    "lastVerified": "2026-03-14",
-    "testStatus": "tested",
-    "overallScore": 9.4,
-    "stabilityScore": 9.6,
-    "valueScore": 9.2,
-    "speedScore": 9.6,
-    "rank": 6
-  },
-  {
-    "id": "firefly",
-    "name": "萤火虫（Firefly）",
-    "slug": "firefly",
-    "tagline": "优质轻量线路 · 8元低门槛与高性价比备用",
-    "description": "萤火虫（Firefly）以 8 元极低月付门槛主打轻量日常需求，提供 60GB 可用流量，折合 0.133 元/GB。提供干净易用的订阅与基础节点，非常适合查阅学术资料、外网轻度交流以及作为主力节点外的防断连备用通道。",
-    "officialUrl": "https://vip02.fireflyaff.com/#/?code=uTKLkAyC",
-    "affiliateUrl": "https://vip02.fireflyaff.com/#/?code=uTKLkAyC",
-    "startingPrice": 8,
-    "currency": "CNY",
-    "billingUnit": "月",
-    "coupon": "firefly",
-    "plans": [
-      {
-        "name": "轻量学生月付",
-        "price": 8,
-        "billingCycle": "月付",
-        "trafficGB": 60,
-        "effectiveTrafficGB": 60,
-        "multiplierNote": "1.0x 标准计费",
-        "unitPricePerGB": 0.133,
-        "features": [
-          "8元极低月付门槛",
-          "60GB 轻量配额",
-          "单 GB 仅 0.133 元",
-          "优惠码立减"
-        ]
-      }
-    ],
-    "protocols": [
-      "Shadowsocks",
-      "Trojan"
-    ],
-    "regions": [
-      "香港",
-      "日本",
-      "新加坡",
-      "美国"
-    ],
-    "nodeCount": "35+",
-    "lineType": "优质线路",
-    "deviceLimit": "2 - 3 台",
-    "speedGuarantee": "300Mbps 峰值",
-    "aiSupport": [
-      "ChatGPT",
-      "Claude"
-    ],
-    "streamingSupport": [
-      "YouTube 4K",
-      "Netflix (部分节点)"
-    ],
-    "advantages": [
-      "8 元/月超低门槛，试错成本极低，学生党无压力",
-      "专属优惠券 firefly 进一步降低入手成本",
-      "非常适合作为日常学术查阅或主力梯子备用通道",
-      "订阅节点精炼，导入即用"
-    ],
-    "disadvantages": [
-      "60GB 月度配额不适合长期观看蓝光/4K 视频",
-      "节点数量中等，主要覆盖核心四地"
-    ],
-    "suitableFor": [
-      "轻度上网、查阅资料与日常交流",
-      "预算有限的学生群体",
-      "需要极低成本防失联备用梯子者"
-    ],
-    "sources": [
-      "jiediantuijian.shop 官方数据",
-      "可用性轮询记录"
-    ],
-    "lastVerified": "2026-03-09",
-    "testStatus": "tested",
-    "overallScore": 9.4,
-    "stabilityScore": 9.1,
-    "valueScore": 9.6,
-    "speedScore": 9.1,
-    "rank": 7
-  },
-  {
-    "id": "kuajie",
-    "name": "跨界",
-    "slug": "kuajie",
-    "tagline": "全专线架构 · 120GB/月跨设备与涉外办公加速",
-    "description": "跨界（跨界云）构建了全专线数据网络架构，针对多设备并发和跨国办公场景进行了连接优化。20 元/月提供 120GB 流量，连接快速响应，支持全流媒体与常用 AI 平台，适合跨境电商与多设备协同办公人群。",
-    "officialUrl": "https://vip02.kuajieaff.com/#/?code=CpJKZicY",
-    "affiliateUrl": "https://vip02.kuajieaff.com/#/?code=CpJKZicY",
-    "startingPrice": 20,
-    "currency": "CNY",
-    "billingUnit": "月",
-    "plans": [
-      {
-        "name": "跨界全专线月付",
-        "price": 20,
-        "billingCycle": "月付",
-        "trafficGB": 120,
-        "effectiveTrafficGB": 120,
-        "multiplierNote": "1.0x 标准计费",
-        "unitPricePerGB": 0.167,
-        "features": [
-          "全专线网络架构",
-          "120GB 实用配额",
-          "单 GB 仅 0.167 元",
-          "多设备并发优化"
-        ]
-      }
-    ],
-    "protocols": [
-      "Shadowsocks",
-      "Trojan",
-      "VLESS"
-    ],
-    "regions": [
-      "香港",
-      "台湾",
-      "日本",
-      "新加坡",
-      "美国",
-      "英国"
-    ],
-    "nodeCount": "50+",
-    "lineType": "全专线架构",
-    "deviceLimit": "4 - 6 台",
-    "speedGuarantee": "600Mbps 专线",
-    "aiSupport": [
-      "ChatGPT",
-      "Claude",
-      "Cursor"
-    ],
-    "streamingSupport": [
-      "Netflix",
-      "Disney+",
-      "YouTube 4K"
-    ],
-    "advantages": [
-      "全专线网络架构，丢包率极低，晚高峰平稳",
-      "20 元月付配 120GB，折合 0.167 元/GB，性价比出众",
-      "针对跨国多任务与多设备办公优化良好",
-      "支持现代常用协议，客户端导入简单"
-    ],
-    "disadvantages": [
-      "暂无极冷门国家节点",
-      "不提供不限时计费套餐"
-    ],
-    "suitableFor": [
-      "跨境电商、多任务跨设备办公",
-      "追求极简轻量连接的用户",
-      "日常多终端出海办公族"
-    ],
-    "sources": [
-      "jiediantuijian.shop 平台实测数据",
-      "多设备并发测试"
-    ],
-    "lastVerified": "2026-03-11",
-    "testStatus": "tested",
-    "overallScore": 9.3,
-    "stabilityScore": 9.3,
-    "valueScore": 9.2,
-    "speedScore": 9.3,
-    "rank": 8
-  },
-  {
     "id": "yinxingren",
     "name": "隐形人",
     "slug": "yinxingren",
@@ -772,10 +363,419 @@ const airports = [
     ],
     "lastVerified": "2026-03-15",
     "testStatus": "tested",
-    "overallScore": 9.3,
+    "overallScore": 9.5,
     "stabilityScore": 9.7,
     "valueScore": 9.4,
     "speedScore": 9.6,
+    "rank": 4
+  },
+  {
+    "id": "wuyou",
+    "name": "无忧",
+    "slug": "wuyou",
+    "tagline": "IPLC 国际专线 · 100GB/月稳定高可用与 20 元内品质标杆",
+    "description": "无忧（无忧链接）主打稳定可靠的 IPLC 内网专线节点，为轻中度办公与学术研究提供低延迟、防丢包的纯净连接。月付仅需 19 元即可享受 100GB 专线流量，是预算在 20 元以内的品质专线标杆。",
+    "officialUrl": "https://wep01.worryfreeaff.com/#/?code=oGi9FQ0J",
+    "affiliateUrl": "https://wep01.worryfreeaff.com/#/?code=oGi9FQ0J",
+    "startingPrice": 19,
+    "currency": "CNY",
+    "billingUnit": "月",
+    "coupon": "wuyou666",
+    "plans": [
+      {
+        "name": "IPLC 实用月付",
+        "price": 19,
+        "billingCycle": "月付",
+        "trafficGB": 100,
+        "effectiveTrafficGB": 100,
+        "multiplierNote": "1.0x 标准计费",
+        "unitPricePerGB": 0.19,
+        "features": [
+          "IPLC 内网专线",
+          "100GB 月度可用",
+          "支持优惠码立减",
+          "多协议支持"
+        ]
+      }
+    ],
+    "protocols": [
+      "Shadowsocks",
+      "Trojan",
+      "Vmess"
+    ],
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国"
+    ],
+    "nodeCount": "45+",
+    "lineType": "IPLC",
+    "deviceLimit": "3 - 5 台",
+    "speedGuarantee": "500Mbps 峰值",
+    "aiSupport": [
+      "ChatGPT",
+      "Claude",
+      "Gemini"
+    ],
+    "streamingSupport": [
+      "Netflix",
+      "Disney+",
+      "YouTube 4K"
+    ],
+    "advantages": [
+      "19 元超亲民月付价格即可上车 IPLC 专线",
+      "专属优惠券 wuyou666 可享进一步优惠",
+      "节点连接稳定，敏感时期不易失联",
+      "配置清晰，支持常用全套客户端一键导入"
+    ],
+    "disadvantages": [
+      "100GB 流量对超重度下载用户略显紧凑",
+      "主要精选核心亚太节点，节点数量中等"
+    ],
+    "suitableFor": [
+      "预算在 20 元以内且追求专线质量的用户",
+      "轻中度日常办公学习与外贸往来",
+      "需要稳定翻墙备用通道的用户"
+    ],
+    "sources": [
+      "jiediantuijian.shop 平台实测数据",
+      "晚高峰延迟复测"
+    ],
+    "lastVerified": "2026-03-12",
+    "testStatus": "tested",
+    "overallScore": 9.5,
+    "stabilityScore": 9.4,
+    "valueScore": 9.3,
+    "speedScore": 9.2,
+    "rank": 5
+  },
+  {
+    "id": "lingmao",
+    "name": "灵猫",
+    "slug": "lingmao",
+    "tagline": "IPLC 专线网络 · 150GB 大流量与 4K 流媒体优化",
+    "description": "灵猫专注于高品质 IPLC 专线网络加速，节点覆盖亚太热门区域，全节点解锁 Netflix 与 Disney+，晚高峰稳定无缓冲。资费 25 元/月给到 150GB 真实流量，单 GB 仅 0.167 元，深受办公白领与高清追剧族的喜爱。",
+    "officialUrl": "https://vip02.civetaff.com/#/?code=SXY8qyrG",
+    "affiliateUrl": "https://vip02.civetaff.com/#/?code=SXY8qyrG",
+    "startingPrice": 25,
+    "currency": "CNY",
+    "billingUnit": "月",
+    "plans": [
+      {
+        "name": "IPLC 白领月付",
+        "price": 25,
+        "billingCycle": "月付",
+        "trafficGB": 150,
+        "effectiveTrafficGB": 150,
+        "multiplierNote": "1.0x 标准计费",
+        "unitPricePerGB": 0.167,
+        "features": [
+          "IPLC 内网专线",
+          "150GB 大额月度配额",
+          "流媒体 4K 全解锁",
+          "三网智能路由"
+        ]
+      }
+    ],
+    "protocols": [
+      "Shadowsocks",
+      "Trojan"
+    ],
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国",
+      "英国"
+    ],
+    "nodeCount": "50+",
+    "lineType": "IPLC",
+    "deviceLimit": "4 台",
+    "speedGuarantee": "800Mbps 专线",
+    "aiSupport": [
+      "ChatGPT",
+      "Claude",
+      "Midjourney"
+    ],
+    "streamingSupport": [
+      "Netflix 全区",
+      "Disney+",
+      "YouTube 4K/8K",
+      "Spotify"
+    ],
+    "advantages": [
+      "IPLC 专线全内网传输，晚高峰无卡顿断流现象",
+      "150GB 实用月度配额，单 GB 成本 0.167 元，定价公道",
+      "流媒体 4K 播放深度优化，大码率秒开无缓冲圈",
+      "工单响应及时，节点维护更新频次高"
+    ],
+    "disadvantages": [
+      "设备连接数限制 4 台，超量设备需另行选购",
+      "无低于 20 元的微型迷你套餐"
+    ],
+    "suitableFor": [
+      "对稳定性有较高要求的白领与办公人员",
+      "4K 流媒体剧迷与视频重度用户",
+      "需要长期可靠外网连接的职场人士"
+    ],
+    "sources": [
+      "jiediantuijian.shop 平台实测数据",
+      "多地流媒体解锁复核记录"
+    ],
+    "lastVerified": "2026-03-12",
+    "testStatus": "tested",
+    "overallScore": 9.4,
+    "stabilityScore": 9.5,
+    "valueScore": 9.1,
+    "speedScore": 9.3,
+    "rank": 6
+  },
+  {
+    "id": "flashleap",
+    "name": "闪跃 FlashLeap",
+    "slug": "flashleap",
+    "tagline": "IPLC 纯专线保障 · 150GB 大流量与超低网络抖动",
+    "description": "闪跃 FlashLeap 采用高规格 IPLC 纯内网专线传输，端到端延迟极低且几乎零丢包。全网针对外服联机竞技、即时通讯与跨国交互做了底层优化，配备 150GB 充足流量，对晚高峰稳定性和网络抖动极其敏感的极客与玩家来说是不二之选。",
+    "officialUrl": "https://vip02.flashleapaff.com/#/?code=8ZIV6HQ3",
+    "affiliateUrl": "https://vip02.flashleapaff.com/#/?code=8ZIV6HQ3",
+    "startingPrice": 24,
+    "currency": "CNY",
+    "billingUnit": "月",
+    "coupon": "shanyue",
+    "plans": [
+      {
+        "name": "IPLC 极速月付",
+        "price": 24,
+        "billingCycle": "月付",
+        "trafficGB": 150,
+        "effectiveTrafficGB": 150,
+        "multiplierNote": "全节点 1.0x 诚实计费",
+        "unitPricePerGB": 0.16,
+        "features": [
+          "IPLC 纯内网点对点",
+          "超低延迟联机优化",
+          "150GB 纯高速流量",
+          "支持多端极速分流"
+        ]
+      }
+    ],
+    "protocols": [
+      "Shadowsocks",
+      "Trojan",
+      "VLESS"
+    ],
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国",
+      "英国"
+    ],
+    "nodeCount": "60+",
+    "lineType": "IPLC纯专线",
+    "deviceLimit": "4 - 6 台",
+    "speedGuarantee": "1000Mbps 专线",
+    "aiSupport": [
+      "ChatGPT",
+      "Claude",
+      "Cursor",
+      "Midjourney"
+    ],
+    "streamingSupport": [
+      "Netflix",
+      "Disney+",
+      "YouTube 4K/8K",
+      "Spotify"
+    ],
+    "advantages": [
+      "IPLC 纯专线网络架构，晚高峰丢包率低于 0.1%，延迟极度平稳",
+      "专为外服联机与即时通讯优化，操作响应迅速无卡顿感",
+      "单 GB 折算仅 0.16 元，在纯 IPLC 梯子中性价比突出",
+      "专属折扣券 shanyue 享受立减特权"
+    ],
+    "disadvantages": [
+      "月付起步门槛 24 元，不支持几元钱的极低微量月付",
+      "节点主要覆盖亚太核心地区，缺少极小众国家"
+    ],
+    "suitableFor": [
+      "外服联机游戏玩家",
+      "对延迟与晚高峰稳定性极度敏感者",
+      "跨国视频会议与即时办公人员"
+    ],
+    "sources": [
+      "jiediantuijian.shop 官方评测报告",
+      "编辑部延迟抖动测速数据"
+    ],
+    "lastVerified": "2026-03-14",
+    "testStatus": "tested",
+    "overallScore": 9.4,
+    "stabilityScore": 9.6,
+    "valueScore": 9.2,
+    "speedScore": 9.6,
+    "rank": 7
+  },
+  {
+    "id": "firefly",
+    "name": "萤火虫（Firefly）",
+    "slug": "firefly",
+    "tagline": "优质轻量线路 · 8元低门槛与高性价比备用",
+    "description": "萤火虫（Firefly）以 8 元极低月付门槛主打轻量日常需求，提供 60GB 可用流量，折合 0.133 元/GB。提供干净易用的订阅与基础节点，非常适合查阅学术资料、外网轻度交流以及作为主力节点外的防断连备用通道。",
+    "officialUrl": "https://vip02.fireflyaff.com/#/?code=uTKLkAyC",
+    "affiliateUrl": "https://vip02.fireflyaff.com/#/?code=uTKLkAyC",
+    "startingPrice": 8,
+    "currency": "CNY",
+    "billingUnit": "月",
+    "coupon": "firefly",
+    "plans": [
+      {
+        "name": "轻量学生月付",
+        "price": 8,
+        "billingCycle": "月付",
+        "trafficGB": 60,
+        "effectiveTrafficGB": 60,
+        "multiplierNote": "1.0x 标准计费",
+        "unitPricePerGB": 0.133,
+        "features": [
+          "8元极低月付门槛",
+          "60GB 轻量配额",
+          "单 GB 仅 0.133 元",
+          "优惠码立减"
+        ]
+      }
+    ],
+    "protocols": [
+      "Shadowsocks",
+      "Trojan"
+    ],
+    "regions": [
+      "香港",
+      "日本",
+      "新加坡",
+      "美国"
+    ],
+    "nodeCount": "35+",
+    "lineType": "优质线路",
+    "deviceLimit": "2 - 3 台",
+    "speedGuarantee": "300Mbps 峰值",
+    "aiSupport": [
+      "ChatGPT",
+      "Claude"
+    ],
+    "streamingSupport": [
+      "YouTube 4K",
+      "Netflix (部分节点)"
+    ],
+    "advantages": [
+      "8 元/月超低门槛，试错成本极低，学生党无压力",
+      "专属优惠券 firefly 进一步降低入手成本",
+      "非常适合作为日常学术查阅或主力梯子备用通道",
+      "订阅节点精炼，导入即用"
+    ],
+    "disadvantages": [
+      "60GB 月度配额不适合长期观看蓝光/4K 视频",
+      "节点数量中等，主要覆盖核心四地"
+    ],
+    "suitableFor": [
+      "轻度上网、查阅资料与日常交流",
+      "预算有限的学生群体",
+      "需要极低成本防失联备用梯子者"
+    ],
+    "sources": [
+      "jiediantuijian.shop 官方数据",
+      "可用性轮询记录"
+    ],
+    "lastVerified": "2026-03-09",
+    "testStatus": "tested",
+    "overallScore": 9.3,
+    "stabilityScore": 9.1,
+    "valueScore": 9.6,
+    "speedScore": 9.1,
+    "rank": 8
+  },
+  {
+    "id": "kuajie",
+    "name": "跨界",
+    "slug": "kuajie",
+    "tagline": "全专线架构 · 120GB/月跨设备与涉外办公加速",
+    "description": "跨界（跨界云）构建了全专线数据网络架构，针对多设备并发和跨国办公场景进行了连接优化。20 元/月提供 120GB 流量，连接快速响应，支持全流媒体与常用 AI 平台，适合跨境电商与多设备协同办公人群。",
+    "officialUrl": "https://vip02.kuajieaff.com/#/?code=CpJKZicY",
+    "affiliateUrl": "https://vip02.kuajieaff.com/#/?code=CpJKZicY",
+    "startingPrice": 20,
+    "currency": "CNY",
+    "billingUnit": "月",
+    "plans": [
+      {
+        "name": "跨界全专线月付",
+        "price": 20,
+        "billingCycle": "月付",
+        "trafficGB": 120,
+        "effectiveTrafficGB": 120,
+        "multiplierNote": "1.0x 标准计费",
+        "unitPricePerGB": 0.167,
+        "features": [
+          "全专线网络架构",
+          "120GB 实用配额",
+          "单 GB 仅 0.167 元",
+          "多设备并发优化"
+        ]
+      }
+    ],
+    "protocols": [
+      "Shadowsocks",
+      "Trojan",
+      "VLESS"
+    ],
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国",
+      "英国"
+    ],
+    "nodeCount": "50+",
+    "lineType": "全专线架构",
+    "deviceLimit": "4 - 6 台",
+    "speedGuarantee": "600Mbps 专线",
+    "aiSupport": [
+      "ChatGPT",
+      "Claude",
+      "Cursor"
+    ],
+    "streamingSupport": [
+      "Netflix",
+      "Disney+",
+      "YouTube 4K"
+    ],
+    "advantages": [
+      "全专线网络架构，丢包率极低，晚高峰平稳",
+      "20 元月付配 120GB，折合 0.167 元/GB，性价比出众",
+      "针对跨国多任务与多设备办公优化良好",
+      "支持现代常用协议，客户端导入简单"
+    ],
+    "disadvantages": [
+      "暂无极冷门国家节点",
+      "不提供不限时计费套餐"
+    ],
+    "suitableFor": [
+      "跨境电商、多任务跨设备办公",
+      "追求极简轻量连接的用户",
+      "日常多终端出海办公族"
+    ],
+    "sources": [
+      "jiediantuijian.shop 平台实测数据",
+      "多设备并发测试"
+    ],
+    "lastVerified": "2026-03-11",
+    "testStatus": "tested",
+    "overallScore": 9.3,
+    "stabilityScore": 9.3,
+    "valueScore": 9.2,
+    "speedScore": 9.3,
     "rank": 9
   },
   {
