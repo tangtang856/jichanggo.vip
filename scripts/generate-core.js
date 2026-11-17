@@ -128,7 +128,8 @@ function renderFooter(relPrefix) {
       </div>
     </div>
   </footer>
-  <script src="${relPrefix}js/main.js"></script>`;
+  <script src="${relPrefix}js/main.js"></script>
+  <script src="${relPrefix}js/wave-bg.js"></script>`;
 }
 
 // 面包屑渲染
@@ -188,6 +189,7 @@ function renderLayout({
   ${schemaScript}
 </head>
 <body>
+  <canvas id="bioluminescent-canvas" class="bioluminescent-bg" aria-hidden="true"></canvas>
   ${renderHeader(relPrefix, activeNav)}
   <main class="main-content">
     <div class="container">

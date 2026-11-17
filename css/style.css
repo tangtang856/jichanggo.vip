@@ -80,10 +80,24 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* ==========================================================================
+   Bioluminescent Waves Dynamic Background (蓝眼泪动态荧光海浪)
+   ========================================================================== */
+.bioluminescent-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  background-color: #030712;
+}
+
 body {
   font-family: var(--font-sans);
-  background-color: var(--bg-page);
-  color: var(--text-body);
+  background-color: #030712;
+  color: #cbd5e1;
   line-height: 1.65;
   letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
@@ -104,7 +118,7 @@ a {
 }
 
 a:hover {
-  color: var(--primary-dark);
+  color: #60a5fa;
 }
 
 img, svg {
@@ -113,19 +127,54 @@ img, svg {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: var(--text-main);
+  color: #f8fafc;
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.025em;
 }
 
-h1 { font-size: 2.25rem; }
-h2 { font-size: 1.65rem; margin-top: 1.75rem; margin-bottom: 0.75rem; }
-h3 { font-size: 1.25rem; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+h1 {
+  font-size: 2.25rem;
+  text-shadow: 0 2px 14px rgba(0, 240, 255, 0.28);
+}
+
+h2 {
+  font-size: 1.65rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 2px 10px rgba(0, 240, 255, 0.18);
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
 h4 { font-size: 1.05rem; }
 
 p { margin-bottom: 1rem; }
 p:last-child { margin-bottom: 0; }
+
+/* 页面主干描述文字在深色夜空背景下清晰可读 */
+.main-content > .container > p,
+.main-content > .container > section > div > p,
+.main-content > .container > section > p {
+  color: #cbd5e1;
+}
+
+/* 卡片与容器内部文本恢复深色高对比度 */
+.card, .topic-card, .table-responsive, .featured-flagship-card, .faq-item, .callout {
+  color: var(--text-body);
+}
+
+.card h1, .card h2, .card h3, .card h4,
+.topic-card h1, .topic-card h2, .topic-card h3, .topic-card h4,
+.featured-flagship-card h1, .featured-flagship-card h2, .featured-flagship-card h3,
+.data-table th, .faq-question {
+  color: var(--text-main);
+  text-shadow: none;
+}
 
 code, pre {
   font-family: var(--font-mono);
@@ -171,16 +220,17 @@ pre code {
 }
 
 /* ==========================================================================
-   Header & Navbar (Frosted Glass Sticky Header)
+   Header & Navbar (Frosted Glass Sticky Header on Bioluminescent Night)
    ========================================================================== */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+  background: rgba(3, 7, 18, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   transition: all var(--transition-normal);
 }
 
@@ -197,13 +247,13 @@ pre code {
   gap: 0.65rem;
   font-size: 1.15rem;
   font-weight: 800;
-  color: var(--text-main);
+  color: #f8fafc;
   text-decoration: none;
   letter-spacing: -0.03em;
 }
 
 .site-logo:hover {
-  color: var(--text-main);
+  color: #38bdf8;
 }
 
 .badge-logo {
@@ -213,7 +263,7 @@ pre code {
   border-radius: var(--radius-sm);
   font-size: 0.85rem;
   font-weight: 700;
-  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.35);
+  box-shadow: 0 2px 8px rgba(0, 240, 255, 0.35);
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
@@ -227,7 +277,7 @@ pre code {
 }
 
 .nav-link {
-  color: var(--text-body);
+  color: #cbd5e1;
   font-size: 0.92rem;
   font-weight: 500;
   padding: 0.45rem 0.85rem;
@@ -236,14 +286,15 @@ pre code {
 }
 
 .nav-link:hover {
-  color: var(--primary);
-  background: rgba(239, 246, 255, 0.8);
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
 }
 
 .nav-link.active {
-  color: var(--primary);
-  background: var(--primary-light);
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.2);
   font-weight: 600;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
 }
 
 .header-actions {
@@ -254,25 +305,27 @@ pre code {
 
 .mobile-menu-btn {
   display: none;
-  background: none;
-  border: 1px solid var(--border-color);
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.3);
   border-radius: var(--radius-sm);
   padding: 0.4rem;
-  color: var(--text-main);
+  color: #f8fafc;
   cursor: pointer;
   transition: background var(--transition-fast);
 }
 
 .mobile-menu-btn:hover {
-  background: var(--bg-subtle);
+  background: rgba(56, 189, 248, 0.15);
 }
 
 .nav-mobile {
   display: none;
-  background: #ffffff;
-  border-bottom: 1px solid var(--border-color);
+  background: rgba(3, 7, 18, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.25);
   padding: 1rem 1.25rem 1.25rem;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
 }
 
 .nav-mobile.open {
@@ -289,15 +342,15 @@ pre code {
 .nav-mobile-link {
   display: block;
   padding: 0.6rem 0.85rem;
-  color: var(--text-body);
+  color: #e2e8f0;
   font-size: 0.95rem;
   font-weight: 500;
   border-radius: var(--radius-sm);
 }
 
 .nav-mobile-link:hover, .nav-mobile-link.active {
-  color: var(--primary);
-  background: var(--primary-light);
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.15);
 }
 
 /* ==========================================================================
@@ -557,14 +610,16 @@ pre code {
 }
 
 /* ==========================================================================
-   Cards & Grids (Bento & Modern Editorial)
+   Cards & Grids (Bento & Modern Editorial with Bioluminescent Glassmorphism)
    ========================================================================== */
 .card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35), 0 0 1px 1px rgba(56, 189, 248, 0.2);
   transition: all var(--transition-normal);
   display: flex;
   flex-direction: column;
@@ -572,9 +627,9 @@ pre code {
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--border-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.45), 0 0 22px rgba(0, 240, 255, 0.3);
+  border-color: rgba(56, 189, 248, 0.7);
 }
 
 .airport-card-grid {
@@ -590,11 +645,13 @@ pre code {
 }
 
 .topic-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35), 0 0 1px 1px rgba(56, 189, 248, 0.2);
   transition: all var(--transition-fast);
   text-decoration: none;
   display: flex;
@@ -602,9 +659,9 @@ pre code {
 }
 
 .topic-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--primary);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  border-color: rgba(56, 189, 248, 0.75);
+  box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.45), 0 0 22px rgba(0, 240, 255, 0.3);
 }
 
 .topic-icon {
@@ -780,10 +837,12 @@ pre code {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  background: #ffffff;
-  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.35), 0 0 1px 1px rgba(56, 189, 248, 0.2);
   margin: 1.5rem 0;
 }
 
@@ -868,11 +927,13 @@ pre code {
 }
 
 .article-main {
-  background: #ffffff;
-  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
   border-radius: var(--radius-lg);
   padding: 2.5rem 2.75rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.35), 0 0 1px 1px rgba(56, 189, 248, 0.2);
   max-width: 840px;
 }
 
@@ -957,11 +1018,13 @@ pre code {
 }
 
 .sidebar-widget {
-  background: #ffffff;
-  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
   border-radius: var(--radius-lg);
   padding: 1.25rem 1.5rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35), 0 0 1px 1px rgba(56, 189, 248, 0.2);
 }
 
 .widget-title {
@@ -1011,19 +1074,47 @@ pre code {
   gap: 0.4rem;
 }
 
+.breadcrumb-nav {
+  margin-bottom: 1.5rem;
+  font-size: 0.88rem;
+  color: #94a3b8;
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 0.4rem;
+}
+
+.breadcrumb-list a {
+  color: #cbd5e1;
+}
+
+.breadcrumb-list a:hover {
+  color: #38bdf8;
+}
+
 .breadcrumb-separator {
-  color: var(--text-light);
+  color: #64748b;
   user-select: none;
 }
 
+.breadcrumb-list .text-main {
+  color: #38bdf8;
+}
+
 /* ==========================================================================
-   Footer (Multi-Column Modern Portal Footer)
+   Footer (Multi-Column Modern Portal Footer on Bioluminescent Night)
    ========================================================================== */
 .site-footer {
-  background: #0f172a;
+  background: rgba(3, 7, 18, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   color: #94a3b8;
   padding: 4.5rem 0 2rem;
-  border-top: 1px solid #1e293b;
+  border-top: 1px solid rgba(56, 189, 248, 0.25);
   margin-top: 4rem;
 }
 
@@ -1087,11 +1178,13 @@ pre code {
    Tiered Showcase & Bento Hero Cards (Breaking Repetition)
    ========================================================================== */
 .featured-flagship-card {
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-  border: 2px solid #bfdbfe;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid rgba(56, 189, 248, 0.45);
   border-radius: var(--radius-lg);
   padding: 2.25rem;
-  box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.12), 0 8px 10px -6px rgba(59, 130, 246, 0.06);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.35), 0 0 25px rgba(0, 240, 255, 0.2);
   margin-bottom: 2rem;
   position: relative;
   overflow: hidden;
@@ -1138,12 +1231,14 @@ pre code {
 
 /* Magazine Hero & Clusters */
 .magazine-hero {
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
   border-radius: var(--radius-lg);
   padding: 2.25rem;
   margin-bottom: 2.5rem;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35), 0 0 1px 1px rgba(56, 189, 248, 0.2);
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
