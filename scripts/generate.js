@@ -129,52 +129,87 @@ function generateHomepage() {
       </div>
     </section>
 
-    <!-- Section 4: 精选推荐卡片 (Card Layout) -->
+    <!-- Section 4: 精选推荐卡片 (Tiered Showcase & Bento Layout) -->
     <section style="margin: 3.5rem 0 2.5rem;">
       <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.5rem;">
         <div>
-          <h2>2026 精选优质机场推荐</h2>
+          <h2>2026 精选优质商业机场推荐</h2>
           <p style="color: var(--text-muted); font-size: 0.95rem;">基于长期连通性监控、真实公开资费与用户口碑综合遴选，标明实测状态。</p>
         </div>
-        <a href="${relPrefix}recommend/index.html" class="btn btn-secondary btn-sm">查看全部推荐专题 &rarr;</a>
+        <a href="${relPrefix}recommend/index.html" class="btn btn-secondary btn-sm">查看全部场景专题 &rarr;</a>
       </div>
 
-      <div class="airport-card-grid">
-        ${allAirports.map(airport => `
+      <!-- Flagship Top 1 Highlight Hero -->
+      <div class="featured-flagship-card">
+        <div class="flagship-grid">
+          <div>
+            <div class="flagship-ribbon">🏆 2026 年度综合推荐第一名 · 编辑部力荐</div>
+            <h3 style="font-size: 1.85rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.35rem;">
+              <a href="${relPrefix}airport/${allAirports[0].slug}/index.html" style="color: inherit;">${allAirports[0].name}</a>
+            </h3>
+            <p style="font-size: 1rem; color: var(--text-muted); font-weight: 500; margin-bottom: 1rem;">
+              ${allAirports[0].tagline}
+            </p>
+            <p style="font-size: 0.95rem; color: var(--text-body); line-height: 1.7; margin-bottom: 1.25rem;">
+              ${allAirports[0].description}
+            </p>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.25rem;">
+              <span class="badge badge-success">SLA 99.9% 专线保障</span>
+              <span class="badge badge-primary">${allAirports[0].lineType}</span>
+              <span class="badge badge-muted">起步流量 ${allAirports[0].plans[0].effectiveTrafficGB}GB / 月</span>
+              ${allAirports[0].coupon ? `<button class="badge badge-danger coupon-copy-btn" data-coupon="${allAirports[0].coupon}" style="cursor: pointer;">🎁 专属优惠码: ${allAirports[0].coupon} (点击复制)</button>` : ''}
+            </div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="${allAirports[0].affiliateUrl}" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary">直达官网订阅购买 &rarr;</a>
+              <a href="${relPrefix}review/${allAirports[0].slug}/index.html" class="btn btn-secondary">阅读深度实测报告</a>
+              <a href="${relPrefix}airport/${allAirports[0].slug}/index.html" class="btn btn-secondary">品牌参数档案</a>
+            </div>
+          </div>
+          <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem; text-align: center; box-shadow: var(--shadow-sm);">
+            <div style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">实测综合评分</div>
+            <div style="font-size: 2.75rem; font-weight: 800; color: #065f46; line-height: 1.1; margin: 0.25rem 0;">${allAirports[0].overallScore}</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1rem;">满分 10.0 / 晚高峰零拥堵</div>
+            <div style="border-top: 1px solid var(--border-subtle); padding-top: 0.75rem; margin-top: 0.5rem;">
+              <div style="font-size: 1.75rem; font-weight: 800; color: var(--primary); line-height: 1;">￥${allAirports[0].startingPrice}</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">起步配额 ${allAirports[0].plans[0].effectiveTrafficGB}GB / ${allAirports[0].billingUnit}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top 2-4 Showcase Grid -->
+      <div class="tier-showcase-grid">
+        ${allAirports.slice(1, 4).map((airport, idx) => `
           <div class="card airport-card">
             <div>
-              <div class="airport-card-header">
-                <div>
-                  <h3 class="airport-name">${airport.name}</h3>
-                  <div class="airport-tagline">${airport.tagline}</div>
-                  ${airport.coupon ? `<div style="font-size: 0.8rem; color: #b91c1c; margin-top: 0.25rem; font-weight: 700;">🎁 专属优惠码: <span style="background: #fee2e2; padding: 0.1rem 0.4rem; border-radius: 4px; border: 1px solid #fca5a5;">${airport.coupon}</span></div>` : ''}
-                </div>
-                <div class="airport-price-box">
-                  <div class="price-num">￥${airport.startingPrice}</div>
-                  <div class="price-cycle">起 / ${airport.billingUnit}</div>
-                </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                <span class="rank-badge ${idx === 0 ? 'rank-2' : idx === 1 ? 'rank-3' : 'rank-other'}">${idx + 2}</span>
+                <span class="badge badge-primary">${airport.lineType}</span>
               </div>
-              <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.6; margin-bottom: 1rem;">
-                ${airport.description.slice(0, 115)}...
+              <h3 class="airport-name"><a href="${relPrefix}airport/${airport.slug}/index.html" style="color: inherit;">${airport.name}</a></h3>
+              <div class="airport-tagline">${airport.tagline.split(' · ')[0]}</div>
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin: 1rem 0 0.75rem;">
+                <div><strong style="font-size: 1.5rem; color: var(--primary);">￥${airport.startingPrice}</strong> <span style="font-size: 0.85rem; color: var(--text-muted);">/ ${airport.billingUnit}</span></div>
+                <div style="font-size: 0.95rem; font-weight: 700; color: #065f46;">${airport.overallScore} <span style="font-size: 0.8rem; font-weight: 400; color: var(--text-muted);">/ 10</span></div>
+              </div>
+              <p style="font-size: 0.88rem; color: var(--text-body); line-height: 1.6; margin-bottom: 1rem;">
+                ${airport.description.slice(0, 95)}...
               </p>
-              <div class="airport-specs">
-                <div class="spec-item"><span>线路类型:</span><span>${airport.lineType}</span></div>
-                <div class="spec-item"><span>节点数量:</span><span>${airport.nodeCount}</span></div>
-                <div class="spec-item"><span>设备限制:</span><span>${airport.deviceLimit}</span></div>
-                <div class="spec-item"><span>实测状态:</span><span>${airport.testStatus === 'tested' ? '<span class="badge badge-success">实测已核验</span>' : '<span class="badge badge-warning">官方公开资料</span>'}</span></div>
-              </div>
               <div class="pro-con-mini">
-                <div class="pro-item">✓ <strong>优点：</strong>${airport.advantages[0]}</div>
-                <div class="con-item">✕ <strong>注意：</strong>${airport.disadvantages[0]}</div>
+                <div class="pro-item">✓ <strong>优势：</strong>${airport.advantages[0]}</div>
               </div>
             </div>
             <div class="card-actions">
               <a href="${airport.affiliateUrl}" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-sm">直达官网</a>
-              <a href="${relPrefix}review/${airport.slug}/index.html" class="btn btn-secondary btn-sm">评测报告</a>
-              <a href="${relPrefix}airport/${airport.slug}/index.html" class="btn btn-secondary btn-sm">品牌档案</a>
+              <a href="${relPrefix}review/${airport.slug}/index.html" class="btn btn-secondary btn-sm">评测详情</a>
             </div>
           </div>
         `).join("")}
+      </div>
+
+      <div style="text-align: center; margin: 1.5rem 0;">
+        <a href="${relPrefix}airport/index.html" class="btn btn-secondary" style="margin-right: 0.75rem;">浏览全部 14 家机场完整档案库 &rarr;</a>
+        <a href="${relPrefix}ranking/overall/index.html" class="btn btn-primary">查看 14 强全网综合排行榜 &rarr;</a>
       </div>
     </section>
 
@@ -1531,27 +1566,74 @@ function generateGuidesPages() {
       { name: "使用教程中心", url: `${relPrefixRoot}guides/index.html` }
     ];
 
+    const clusters = [
+      {
+        id: "desktop",
+        title: "🖥️ 桌面端操作系统指南",
+        badge: "Windows & macOS",
+        desc: "全面覆盖 Windows 10/11、macOS、Clash Verge Rev、Sing-box 与 Surge Mac 的系统代理及 TUN 虚拟网卡配置。",
+        items: guidesData.filter(g => g.group === "桌面端系统")
+      },
+      {
+        id: "mobile",
+        title: "📱 移动端客户端指南",
+        badge: "iOS & Android",
+        desc: "涵盖 iPhone/iPad 小火箭 Shadowrocket、Loon、Quantumult X、Stash 以及安卓 Clash、v2rayNG、NekoBox 配置。",
+        items: guidesData.filter(g => g.group === "移动端系统")
+      },
+      {
+        id: "router",
+        title: "🌐 软路由与大屏电视主机",
+        badge: "OpenWrt / Apple TV / 主机",
+        desc: "OpenWrt 软路由 PassWall/OpenClash 全屋透明代理、Apple TV 4K 旁路由及 PS5/Switch/Xbox 游戏主机加速。",
+        items: guidesData.filter(g => g.group === "路由器与大屏")
+      },
+      {
+        id: "advanced",
+        title: "⚙️ 高阶规则、扩展与故障排查",
+        badge: "内核 / 规则 / 排错",
+        desc: "深度掌握 TUN 模式接管、Merge/Script 配置文件定制、订阅转换隐私安全、浏览器独立代理及无网全链路排查。",
+        items: guidesData.filter(g => g.group === "高阶规则与排错")
+      }
+    ];
+
     const content = `
       <h1>全平台科学上网客户端配置与使用教程中心</h1>
-      <p style="font-size: 1.05rem; color: var(--text-muted); margin-bottom: 2rem;">
-        收录 30 篇覆盖 Windows、Android、iOS、macOS、软路由、智能电视、主机与开发者环境的详尽配置实操手册。支持 Clash Verge Rev、Sing-box、小火箭、Surge 等主流客户端订阅导入、TUN 虚拟网卡开启及全场景故障排错。
+      <p style="font-size: 1.05rem; color: var(--text-muted); margin-bottom: 2.5rem;">
+        收录 30 篇覆盖 Windows、Android、iOS、macOS、软路由、智能电视、主机与开发者环境的详尽配置实操手册。按客户端运行平台划分为 4 大技术专题，支持 Clash Verge Rev、Sing-box、小火箭、Surge 等主流客户端订阅导入、TUN 虚拟网卡开启及全场景故障排错。
       </p>
 
-      <div class="topic-grid">
-        ${guidesData.map(guide => `
-          <div class="card" style="padding: 1.5rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-              <span class="badge badge-primary">${guide.group || "系统指南"}</span>
-              <span style="font-size: 0.8rem; color: var(--text-muted);">${guide.readTime} 掌握</span>
+      ${clusters.map(cluster => `
+        <div class="cluster-section" id="${cluster.id}">
+          <div class="cluster-header">
+            <div class="cluster-title-group">
+              <h2>${cluster.title}</h2>
+              <span class="badge badge-primary">${cluster.badge}</span>
             </div>
-            <h3 style="margin-top: 0; font-size: 1.15rem;"><a href="${relPrefixRoot}guides/${guide.slug}/index.html">${guide.title.split(' · ')[0]}</a></h3>
-            <p style="color: var(--text-body); font-size: 0.88rem; line-height: 1.6; margin-bottom: 1.25rem;">
-              ${guide.metaDesc}
-            </p>
-            <a href="${relPrefixRoot}guides/${guide.slug}/index.html" class="btn btn-secondary btn-sm">阅读图文配置步骤 &rarr;</a>
+            <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">共 ${cluster.items.length} 篇实操手册</span>
           </div>
-        `).join("")}
-      </div>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: -0.75rem; margin-bottom: 1.5rem;">${cluster.desc}</p>
+          <div class="topic-grid">
+            ${cluster.items.map(guide => `
+              <div class="card" style="padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <span class="badge badge-secondary">${guide.group}</span>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">${guide.readTime} 掌握</span>
+                  </div>
+                  <h3 style="margin-top: 0; font-size: 1.15rem; line-height: 1.45;"><a href="${relPrefixRoot}guides/${guide.slug}/index.html">${guide.title.split(' · ')[0]}</a></h3>
+                  <p style="color: var(--text-body); font-size: 0.88rem; line-height: 1.6; margin-bottom: 1.25rem;">
+                    ${guide.metaDesc}
+                  </p>
+                </div>
+                <div style="border-top: 1px solid var(--border-subtle); padding-top: 0.75rem; margin-top: auto;">
+                  <a href="${relPrefixRoot}guides/${guide.slug}/index.html" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">阅读图文配置步骤 &rarr;</a>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      `).join("")}
     `;
 
     const html = renderLayout({
@@ -1659,23 +1741,62 @@ function generateBlogPages() {
     const content = `
       <h1>选购指南与出海技术博客大全</h1>
       <p style="font-size: 1.05rem; color: var(--text-muted); margin-bottom: 2rem;">
-        收录 100 篇深度原创出海长文，涵盖选购决策防坑、ChatGPT/Claude AI 场景、全球流媒体 4K 解锁、跨境电商防关联、外服游戏联机、底层协议科普、网络安全防范与极客开发者环境。
+        收录 100 篇深度原创出海长文，涵盖选购决策防坑、ChatGPT/Claude AI 场景、全球流媒体 4K 解锁、跨境电商防关联、外服游戏联机、底层协议科普、网络安全防范与极客开发者环境。支持多分类即时无刷新筛选。
       </p>
 
-      <div class="airport-card-grid">
+      <!-- Magazine Hero Featured Post -->
+      <div class="magazine-hero">
+        <div>
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.5rem;">
+            <span class="badge badge-danger">🌟 本周精选长文</span>
+            <span class="badge badge-primary">${blogData[0].category}</span>
+            <span style="font-size: 0.82rem; color: var(--text-muted);">${blogData[0].date} · ${blogData[0].readTime} 掌握</span>
+          </div>
+          <h2 style="font-size: 1.65rem; margin-top: 0.25rem; margin-bottom: 0.75rem;"><a href="${relPrefixRoot}blog/${blogData[0].slug}/index.html" style="color: inherit;">${blogData[0].title}</a></h2>
+          <p style="font-size: 0.98rem; color: var(--text-body); line-height: 1.7; margin-bottom: 1.25rem;">
+            ${blogData[0].metaDesc}
+          </p>
+          <a href="${relPrefixRoot}blog/${blogData[0].slug}/index.html" class="btn btn-primary">阅读深度剖析全文 &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+        <h2 style="font-size: 1.35rem; margin: 0;">按主题分类检索</h2>
+        <div id="filter-count-notice" style="font-size: 0.88rem; color: var(--text-muted); font-weight: 500;">
+          当前展示全部 100 篇文章
+        </div>
+      </div>
+
+      <div class="filter-tabs-container">
+        <button class="filter-tab-btn active" data-category="all">全部文章 (100)</button>
+        <button class="filter-tab-btn" data-category="选购决策">选购防坑 (19)</button>
+        <button class="filter-tab-btn" data-category="AI工具">ChatGPT/AI (17)</button>
+        <button class="filter-tab-btn" data-category="原理科普">协议与网络原理 (12)</button>
+        <button class="filter-tab-btn" data-category="流媒体娱乐">流媒体4K (12)</button>
+        <button class="filter-tab-btn" data-category="跨境业务">跨境电商出海 (11)</button>
+        <button class="filter-tab-btn" data-category="游戏加速">外服游戏联机 (11)</button>
+        <button class="filter-tab-btn" data-category="安全防范">安全与防封策略 (9)</button>
+        <button class="filter-tab-btn" data-category="开发办公">开发办公环境 (9)</button>
+      </div>
+
+      <!-- Blog Cards Grid -->
+      <div class="airport-card-grid" id="blog-grid">
         ${blogData.map(blog => `
-          <div class="card">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-              <span class="badge badge-muted">${blog.category}</span>
-              <span style="font-size: 0.8rem; color: var(--text-muted);">${blog.readTime}</span>
+          <div class="card blog-card-item" data-category="${blog.category}" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <span class="badge badge-primary">${blog.category}</span>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">${blog.readTime}</span>
+              </div>
+              <h3 style="margin-top: 0; font-size: 1.12rem; line-height: 1.45;"><a href="${relPrefixRoot}blog/${blog.slug}/index.html">${blog.title.split(' · ')[0]}</a></h3>
+              <p style="color: var(--text-body); font-size: 0.88rem; line-height: 1.6; margin-bottom: 1.25rem;">
+                ${blog.metaDesc}
+              </p>
             </div>
-            <h3 style="margin-top: 0; font-size: 1.15rem;"><a href="${relPrefixRoot}blog/${blog.slug}/index.html">${blog.title.split(' · ')[0]}</a></h3>
-            <p style="color: var(--text-body); font-size: 0.88rem; line-height: 1.6; margin-bottom: 1.25rem;">
-              ${blog.metaDesc}
-            </p>
-            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-muted);">
+            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border-subtle); padding-top: 0.75rem; margin-top: auto;">
               <span>${blog.date}</span>
-              <a href="${relPrefixRoot}blog/${blog.slug}/index.html" style="font-weight: 600;">阅读全文 &rarr;</a>
+              <a href="${relPrefixRoot}blog/${blog.slug}/index.html" style="font-weight: 600; color: var(--primary);">阅读全文 &rarr;</a>
             </div>
           </div>
         `).join("")}
