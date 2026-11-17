@@ -153,6 +153,7 @@ function renderBreadcrumbs(items, relPrefix) {
 function renderLayout({
   title,
   description,
+  keywords,
   canonicalUrl,
   relPrefix,
   activeNav,
@@ -162,6 +163,7 @@ function renderLayout({
   extraScripts = ""
 }) {
   const schemaScript = schema ? `<script type="application/ld+json">${JSON.stringify(schema, null, 2)}</script>` : "";
+  const keywordsMeta = keywords ? `\n  <meta name="keywords" content="${keywords}">` : "";
 
   return `<!DOCTYPE html>
 <html lang="zh-CN">
@@ -169,7 +171,7 @@ function renderLayout({
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title}</title>
-  <meta name="description" content="${description}">
+  <meta name="description" content="${description}">${keywordsMeta}
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="${canonicalUrl}">
   <meta property="og:locale" content="zh_CN">

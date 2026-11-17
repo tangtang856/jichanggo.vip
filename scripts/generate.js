@@ -1143,6 +1143,7 @@ function generateAirportProfiles() {
     const html = renderLayout({
       title,
       description: "2026优质机场节点导航与品牌资料库。汇聚知名老牌专线与平价梯子品牌，详细公开节点覆盖、协议支持、价格套餐及实测核验状态。",
+      keywords: "机场节点, 机场档案, 机场推荐, 性价比机场, 梯子推荐, vpn节点, 套餐价格, 测速信息",
       canonicalUrl,
       relPrefix: relPrefixRoot,
       activeNav: "review",
@@ -1357,9 +1358,14 @@ function generateAirportProfiles() {
       </div>
     `;
 
+    const title = `${airport.name}如何？最新套餐价格表/流量规格/线路节点分布/晚高峰测速信息档案 | 机场Go`;
+    const description = `2026最新${airport.name}官方参数规格档案。全面公开${airport.name}最新套餐价格（起步￥${airport.startingPrice}/${airport.billingUnit}）、${airport.plans[0].trafficGB}GB起步可用流量、底层${airport.lineType}网络架构及${airport.regions.join("、")}等${airport.nodeCount}全球节点地区分布。深度汇总晚高峰三网真实测速信息、支持协议、设备连接数限制及优惠券${airport.coupon ? airport.coupon : ''}，为用户选购提供专业客观的规格核验参考。`;
+    const keywords = `${airport.name}, ${airport.name}如何, ${airport.name}怎么样, ${airport.name}套餐价格, ${airport.name}流量规格, ${airport.name}线路节点, ${airport.name}测速信息, 机场节点, 性价比机场, 梯子推荐, vpn`;
+
     const html = renderLayout({
-      title: `${airport.name} 机场节点档案 · 全球节点与套餐规格清单 | 机场Go`,
-      description: `${airport.name} 详细规格参数与套餐资费明细。公开线路架构、节点覆盖地区、协议兼容、设备上限与实测数据来源，帮助用户核实选购。`,
+      title,
+      description,
+      keywords,
       canonicalUrl,
       relPrefix: relPrefixSub,
       activeNav: "review",
@@ -1432,6 +1438,7 @@ function generateReviewPages() {
     const html = renderLayout({
       title,
       description: "2026机场独立综合深度评测大全。坚持实事求是与客观透明，深度拆解隐形人、微风网络、闪跃、浪网、暮光等14大品牌的套餐、专线质量与流媒体解锁表现。",
+      keywords: "机场评测, 机场怎么样, 机场如何, 机场推荐, 梯子评测, 性价比机场, 套餐价格, 节点测速, vpn推荐",
       canonicalUrl,
       relPrefix: relPrefixRoot,
       activeNav: "review",
@@ -1688,9 +1695,14 @@ function generateReviewPages() {
       "datePublished": airport.lastVerified
     };
 
+    const title = `${airport.name}怎么样如何？2026最新套餐价格/流量规格/节点地区/晚高峰测速深度评测 | 机场Go`;
+    const description = `【2026专业深度评测】${airport.name}究竟怎么样如何？本文客观公开${airport.name}最新套餐价格（${airport.startingPrice}元/月起）、月度可用流量（${airport.plans[0].trafficGB}GB起）、底层${airport.lineType}网络架构及${airport.regions.slice(0, 4).join("、")}等${airport.nodeCount}全球节点覆盖。深度汇总中国电信/联通/移动晚高峰（20:30-22:30）真实测速数据（下行实测${detail.speedMetrics ? detail.speedMetrics.telecom.dl : '600Mbps'}、平均延迟${detail.speedMetrics ? detail.speedMetrics.telecom.ping : '40ms'}）、ChatGPT与4K/8K流媒体解锁表现，客观剖析5大核心优势与短板，为您提供权威避坑购买决策。`;
+    const keywords = `${airport.name}, ${airport.name}怎么样, ${airport.name}如何, ${airport.name}套餐价格, ${airport.name}流量, ${airport.name}节点, ${airport.name}测速, ${airport.name}评测, 机场推荐, 性价比机场, 梯子推荐, vpn推荐, vpn机场, vpn节点`;
+
     const html = renderLayout({
-      title: `${airport.name} 深度综合评测 · 价格、节点分布、流媒体与AI实测结论 | 机场Go`,
-      description: `${airport.name} 深度综合评测报告。真实解析套餐价格、IEPL专线表现、YouTube 4K与ChatGPT/Claude解锁支持，客观列举优缺点，提供购买决策。`,
+      title,
+      description,
+      keywords,
       canonicalUrl,
       relPrefix: relPrefixSub,
       activeNav: "review",
