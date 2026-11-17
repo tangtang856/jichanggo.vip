@@ -761,6 +761,7 @@ function generateRecommendPages() {
 function generateRankingPages() {
   const relPrefixRoot = "../";
   const relPrefixSub = "../../";
+  const overallRankings = getRankingsOverall();
 
   // 3.1 排行榜导航首页 ranking/index.html
   {
@@ -773,10 +774,56 @@ function generateRankingPages() {
     ];
 
     const content = `
-      <h1>2026 年度多维度机场排行榜</h1>
+      <h1>2026 年度多维度机场排行榜中心</h1>
       <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem;">
-        我们杜绝单纯以“赞助费”决定排名的黑箱操作。所有排行榜均基于明确可核验的维度：真实每 GB 单价公式、线路硬件成本（IEPL vs 普通中转）、真实晚高峰抗封锁表现与用户口碑。
+        我们杜绝单纯以“赞助费”决定排名的黑箱操作。所有排行榜均基于明确可核验的维度：真实每 GB 单价公式、线路硬件成本（IEPL/IPLC 物理专线 vs 普通中转）、真实晚高峰抗封锁表现与用户口碑。
       </p>
+
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin: 1.5rem 0 1rem;">
+        <div>
+          <h2>综合实力实测排行榜 (2026 核验版)</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">综合考量网络延迟、专线 SLA、客户端易用性、流媒体解锁及售后响应公开计分。</p>
+        </div>
+        <a href="${relPrefixRoot}ranking/overall/index.html" class="btn btn-secondary btn-sm">查看独立全榜单 &rarr;</a>
+      </div>
+
+      <div class="table-responsive" style="margin-bottom: 2.5rem;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 70px;">排名</th>
+              <th>品牌名称</th>
+              <th>起步价格</th>
+              <th>线路架构</th>
+              <th>协议支持</th>
+              <th>最适合人群</th>
+              <th>综合评分</th>
+              <th style="text-align: right;">详情</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${overallRankings.map((airport, idx) => `
+              <tr>
+                <td><span class="rank-badge ${idx === 0 ? 'rank-1' : idx === 1 ? 'rank-2' : idx === 2 ? 'rank-3' : 'rank-other'}">${idx + 1}</span></td>
+                <td>
+                  <a href="${relPrefixRoot}airport/${airport.slug}/index.html" style="font-weight: 700; color: var(--text-main);">${airport.name}</a>
+                </td>
+                <td><strong style="color: var(--primary);">￥${airport.startingPrice}</strong> / ${airport.billingUnit}</td>
+                <td>${airport.lineType}</td>
+                <td><span style="font-size: 0.85rem;">${airport.protocols.slice(0, 2).join(", ")}</span></td>
+                <td>${airport.suitableFor[0]}</td>
+                <td><strong style="color: #065f46; font-size: 1.05rem;">${airport.overallScore}</strong> / 10</td>
+                <td style="text-align: right;">
+                  <a href="${relPrefixRoot}review/${airport.slug}/index.html" class="btn btn-secondary btn-sm">评测报告</a>
+                </td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 style="margin-bottom: 1rem;">细分维度定向排行榜</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">根据您的网络使用偏好与预算限制，选择最适合您的专属榜单：</p>
 
       <div class="topic-grid">
         <a href="${relPrefixRoot}ranking/overall/index.html" class="topic-card">
@@ -835,29 +882,30 @@ function generateRankingPages() {
         <table class="data-table">
           <thead>
             <tr>
-              <th>排名</th>
-              <th>品牌</th>
+              <th style="width: 70px;">排名</th>
+              <th>品牌名称</th>
               <th>起步价格</th>
-              <th>线路类型</th>
-              <th>节点覆盖</th>
-              <th>实测评分</th>
-              <th>操作</th>
+              <th>线路架构</th>
+              <th>协议支持</th>
+              <th>最适合人群</th>
+              <th>综合评分</th>
+              <th style="text-align: right;">详情</th>
             </tr>
           </thead>
           <tbody>
-            ${rankings.map((a, idx) => `
+            ${rankings.map((airport, idx) => `
               <tr>
                 <td><span class="rank-badge ${idx === 0 ? 'rank-1' : idx === 1 ? 'rank-2' : idx === 2 ? 'rank-3' : 'rank-other'}">${idx + 1}</span></td>
                 <td>
-                  <strong><a href="${relPrefixSub}airport/${a.slug}/index.html">${a.name}</a></strong>
-                  <div style="font-size: 0.8rem; color: var(--text-muted);">${a.tagline}</div>
+                  <a href="${relPrefixSub}airport/${airport.slug}/index.html" style="font-weight: 700; color: var(--text-main);">${airport.name}</a>
                 </td>
-                <td>￥${a.startingPrice} / ${a.billingUnit}</td>
-                <td>${a.lineType}</td>
-                <td>${a.nodeCount}</td>
-                <td><strong style="color: #065f46; font-size: 1.1rem;">${a.overallScore}</strong> / 10</td>
-                <td>
-                  <a href="${relPrefixSub}review/${a.slug}/index.html" class="btn btn-secondary btn-sm">评测报告</a>
+                <td><strong style="color: var(--primary);">￥${airport.startingPrice}</strong> / ${airport.billingUnit}</td>
+                <td>${airport.lineType}</td>
+                <td><span style="font-size: 0.85rem;">${airport.protocols.slice(0, 2).join(", ")}</span></td>
+                <td>${airport.suitableFor[0]}</td>
+                <td><strong style="color: #065f46; font-size: 1.05rem;">${airport.overallScore}</strong> / 10</td>
+                <td style="text-align: right;">
+                  <a href="${relPrefixSub}review/${airport.slug}/index.html" class="btn btn-secondary btn-sm">评测报告</a>
                 </td>
               </tr>
             `).join("")}
@@ -939,7 +987,7 @@ function generateRankingPages() {
       </div>
 
       <h2>性价比选购总结建议</h2>
-      <p>由测算表可见，平价走量型机场（如 WestData）每 GB 单价可下探至 0.05 元/GB 左右，适合流量消耗极大、以下载和长时间视频为主的用户；而高品质专线机场（如 FlyingBird、TAG VPN）每 GB 单价维持在 0.1~0.4 元区间，提供了高昂的专线网络稳定性溢价。</p>
+      <p>由测算表可见，平价走量型机场（如微风网络 Breezenet、飞猫云）每 GB 单价可下探至 0.035~0.04 元/GB 左右，适合流量消耗极大、以下载和长时间视频为主的用户；而高品质纯专线机场（如隐形人、闪跃 FlashLeap）每 GB 单价维持在 0.13~0.16 元区间，提供了高昂的专线网络稳定性溢价与晚高峰零拥堵保障。</p>
     `;
 
     const html = renderLayout({
