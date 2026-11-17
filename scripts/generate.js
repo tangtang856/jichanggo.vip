@@ -84,7 +84,7 @@ function generateHomepage() {
 
       <div class="hero-stats">
         <div class="stat-item">
-          <div class="stat-value">5+</div>
+          <div class="stat-value">14+</div>
           <div class="stat-label">深度实测核验品牌</div>
         </div>
         <div class="stat-item">
@@ -112,7 +112,7 @@ function generateHomepage() {
       <div class="quick-answer-grid">
         <div class="quick-answer-item">
           <strong>1. 新手小白如何选？</strong>
-          <span>不熟悉 Clash 配置的首选提供一键定制客户端的品牌（如 <a href="${relPrefix}airport/fastlink/index.html">FastLink</a>）；有追剧需求且要低门槛月付的首选 <a href="${relPrefix}airport/flyingbird/index.html">FlyingBird</a>。</span>
+          <span>不熟悉客户端配置的首选提供专用自研客户端的品牌（如 <a href="${relPrefix}airport/wavenet/index.html">浪网 WaveNet</a>）；追求极致性价比大流量的首选 <a href="${relPrefix}airport/breezenet/index.html">微风网络 Breezenet</a> 或 <a href="${relPrefix}airport/feiv/index.html">飞V</a>；追求晚高峰零丢包与商务外贸首选 <a href="${relPrefix}airport/yinxingren/index.html">隐形人</a>。</span>
         </div>
         <div class="quick-answer-item">
           <strong>2. 哪些因素最值得关注？</strong>
@@ -147,6 +147,7 @@ function generateHomepage() {
                 <div>
                   <h3 class="airport-name">${airport.name}</h3>
                   <div class="airport-tagline">${airport.tagline}</div>
+                  ${airport.coupon ? `<div style="font-size: 0.8rem; color: #b91c1c; margin-top: 0.25rem; font-weight: 700;">🎁 专属优惠码: <span style="background: #fee2e2; padding: 0.1rem 0.4rem; border-radius: 4px; border: 1px solid #fca5a5;">${airport.coupon}</span></div>` : ''}
                 </div>
                 <div class="airport-price-box">
                   <div class="price-num">￥${airport.startingPrice}</div>
@@ -168,8 +169,9 @@ function generateHomepage() {
               </div>
             </div>
             <div class="card-actions">
-              <a href="${relPrefix}review/${airport.slug}/index.html" class="btn btn-secondary btn-sm">深度综合评测</a>
-              <a href="${relPrefix}airport/${airport.slug}/index.html" class="btn btn-primary btn-sm">品牌参数档案</a>
+              <a href="${airport.affiliateUrl}" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-sm">直达官网</a>
+              <a href="${relPrefix}review/${airport.slug}/index.html" class="btn btn-secondary btn-sm">评测报告</a>
+              <a href="${relPrefix}airport/${airport.slug}/index.html" class="btn btn-secondary btn-sm">品牌档案</a>
             </div>
           </div>
         `).join("")}
@@ -293,7 +295,10 @@ function generateHomepage() {
             <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
               <span>核验日期: ${airport.lastVerified}</span> · <span>数据来源: ${airport.sources[0]}</span>
             </div>
-            <a href="${relPrefix}review/${airport.slug}/index.html" class="btn btn-secondary btn-sm" style="width: 100%;">查看详细评测报告 &rarr;</a>
+            <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+              <a href="${airport.affiliateUrl}" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-sm" style="flex:1; text-align: center;">官网直达</a>
+              <a href="${relPrefix}review/${airport.slug}/index.html" class="btn btn-secondary btn-sm" style="flex:1; text-align: center;">评测报告 &rarr;</a>
+            </div>
           </div>
         `).join("")}
       </div>
@@ -530,17 +535,17 @@ function generateRecommendPages() {
       slug: "budget",
       title: "低预算平价机场推荐 · 百元以内便宜梯子套餐横评 | 机场Go",
       h1: "百元内低预算平价机场推荐：高性价比便宜节点盘点",
-      metaDesc: "2026年低预算与高性价比平价机场推荐。针对学生党、轻度查资料用户，盘点月付9.9元起、百元以内年付及不限时备用套餐，算清每GB单价防踩坑。",
-      primaryBrand: "westdata",
+      metaDesc: "2026年低预算与高性价比平价机场推荐。针对学生党、轻度查资料用户，盘点月付4.9元起、百元以内年付及不限时备用套餐，算清每GB单价防踩坑。",
+      primaryBrand: "feiv",
       intro: "对于刚开始接触科学上网、主要用来查阅学术文献、浏览 GitHub 代码或偶尔看几段视频的用户而言，动辄四五十元一个月的商业专线往往性能过剩。低预算平价机场以极低的价格提供充足的可用流量，是学生党与轻度用户的理想选择。",
-      criteria: "入选标准：支持低门槛月付（10元左右）、年付资费控制在百元以内、具备合理的测速可用性、支持通用客户端订阅。"
+      criteria: "入选标准：支持低门槛月付（10元以内）、年付资费控制在百元以内、具备合理的测速可用性、支持通用客户端订阅。"
     },
     {
       slug: "premium",
       title: "2026稳定专线VPN与高端IEPL机场推荐 · 晚高峰不卡顿 | 机场Go",
       h1: "高端稳定专线VPN与IEPL机场推荐：告别断连与晚高峰卡顿",
       metaDesc: "2026高端IEPL与IPLC内网专线机场精选推荐。千兆专线带宽冗余、晚高峰超低延迟抖动、原生住宅IP解锁，专为跨国商务外贸、远程办公与专业开发者打造。",
-      primaryBrand: "tag-vpn",
+      primaryBrand: "yinxingren",
       intro: "对于跨境电商从业者、跨国视频会议用户以及对网络连接质量有极致要求的专业人士来说，掉线和卡顿意味着直接的经济损失。高端专线机场采用物理级内网专线，数据不经公网和 GFW，晚高峰依然坚挺满速。",
       criteria: "入选标准：全内网 IEPL/IPLC 物理专线架构、不限或宽松的设备连接限制、全球广泛节点支持、24/7 SLA 运维保障。"
     },
@@ -549,16 +554,16 @@ function generateRecommendPages() {
       title: "2026新手小白梯子推荐 · 一键客户端与零基础翻墙科学上网指南 | 机场Go",
       h1: "新手小白友好梯子推荐：支持一键客户端与全平台配置",
       metaDesc: "适合电脑手机新手的梯子与机场推荐。无需学习复杂的 Clash 分流规则与订阅代码，官方自带 Windows/Mac/Android/iOS 一键即连客户端，零基础轻松上手。",
-      primaryBrand: "fastlink",
-      intro: "很多刚接触翻墙的用户被 Clash 的 YAML 配置文件、分流规则、内核报错等概念劝退。新手友好型机场专门自主研发了一键式客户端，下载安装后登录即可一键连接，遇到网络波动自动后台容灾切换。",
-      criteria: "入选标准：具备专属全平台一键即连软件、免配置免调试、具备健全的中文在线客服体系、节点自动负载均衡。"
+      primaryBrand: "breezenet",
+      intro: "很多刚接触翻墙的用户被 Clash 的 YAML 配置文件、分流规则、内核报错等概念劝退。新手友好型机场专门提供了极简配置与一键式客户端，下载安装后登录即可一键连接，遇到网络波动自动后台容灾切换。",
+      criteria: "入选标准：具备专属全平台一键即连软件或超详细图文、免配置免调试、具备健全的中文在线客服体系、节点自动负载均衡。"
     },
     {
       slug: "stable",
       title: "敏感时期稳定机场推荐 · 晚高峰抗封锁专线梯子精选 | 机场Go",
       h1: "敏感时期抗封锁稳定机场推荐：晚高峰低延迟专线梯子实测",
       metaDesc: "特殊网络敏感时期防失联机场推荐。多入口 BGP 智能调度、IEPL 专线冗余备份，有效抵抗 GFW 针对性封锁与骨干网丢包，保障业务全天候稳定在线。",
-      primaryBrand: "kuromis",
+      primaryBrand: "flashleap",
       intro: "每逢重大国际会议或重要网络敏感节点，公共互联网出口往往会遭遇严格的流量特征审查与针对性封锁，导致大量普通中转和直连节点大面积超时。抗封锁稳定机场通过内网物理专线和多路容灾隧道，有效筑起防线。",
       criteria: "入选标准：物理内网隔离专线、具备三网入口容灾方案、长周期连通率高于 99.5%、节点 IP 定期健康维护。"
     },
@@ -567,7 +572,7 @@ function generateRecommendPages() {
       title: "ChatGPT与Claude专用机场推荐 · 原生IP解锁不封号节点精选 | 机场Go",
       h1: "ChatGPT 与 Claude 专用 AI 机场推荐：原生家宽纯净 IP 精选",
       metaDesc: "专为访问 OpenAI、ChatGPT Plus、Claude 3.5 Sonnet 及 Midjourney 优化的机场节点推荐。提供原生住宅IP，告别Access Denied与账号被封风控。",
-      primaryBrand: "kuromis",
+      primaryBrand: "yinxingren",
       intro: "OpenAI 与 Anthropic 引入了极为严苛的反爬虫与地理风控体系，数据中心机房 IP 往往直接被拒绝访问。AI 专用机场配备高质量原生家庭宽带住宅 IP，并针对 AI 接口做了协议优化与 UDP 转发支持。",
       criteria: "入选标准：拥有纯净原生住宅 IP 节点池、支持 WebRTC 与语音对话 UDP 转发、及时跟进 OpenAI 封锁策略轮换 IP。"
     },
@@ -576,7 +581,7 @@ function generateRecommendPages() {
       title: "Netflix与Disney+流媒体4K解锁机场推荐 · 奈飞看剧梯子指南 | 机场Go",
       h1: "Netflix / Disney+ / YouTube 4K 流媒体解锁机场推荐",
       metaDesc: "2026年支持 Netflix 全区解锁、Disney+、HBO Max 及 YouTube 4K/8K 极速播放的流媒体机场推荐。大带宽专线保障，晚高峰告别画质降级与缓冲圈圈。",
-      primaryBrand: "flyingbird",
+      primaryBrand: "lingmao",
       intro: "追剧党科学上网最在乎两件事：一是<strong>解锁版权</strong>（能不能看到非自制剧），二是<strong>带宽与缓冲</strong>（晚高峰能不能流畅看 4K/8K HDR）。流媒体推荐专题为您筛选带宽冗余大、流媒体全绿解锁的优质品牌。",
       criteria: "入选标准：全天候稳定解锁 Netflix 港/台/美/日/新热门大区、YouTube 4K 播放无压力、带宽储备充足。"
     }
@@ -630,9 +635,10 @@ function generateRecommendPages() {
                 <div class="spec-item"><span>设备限制:</span><span>${primary.deviceLimit}</span></div>
                 <div class="spec-item"><span>协议支持:</span><span>${primary.protocols.join(', ')}</span></div>
               </div>
-              <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+              <div style="display: flex; gap: 0.75rem; margin-top: 1rem; flex-wrap: wrap;">
+                <a href="${primary.affiliateUrl}" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-sm">直达官网开通 &rarr;</a>
                 <a href="${relPrefixSub}review/${primary.slug}/index.html" class="btn btn-secondary btn-sm">查看独立评测</a>
-                <a href="${relPrefixSub}airport/${primary.slug}/index.html" class="btn btn-primary btn-sm">品牌参数档案</a>
+                <a href="${relPrefixSub}airport/${primary.slug}/index.html" class="btn btn-secondary btn-sm">品牌参数档案</a>
               </div>
             </div>
 
@@ -1073,9 +1079,10 @@ function generateAirportProfiles() {
               <div class="spec-item"><span>设备:</span><span>${a.deviceLimit}</span></div>
               <div class="spec-item"><span>核验日期:</span><span>${a.lastVerified}</span></div>
             </div>
-            <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-              <a href="${relPrefixRoot}airport/${a.slug}/index.html" class="btn btn-primary btn-sm" style="flex:1;">品牌参数档案</a>
-              <a href="${relPrefixRoot}review/${a.slug}/index.html" class="btn btn-secondary btn-sm" style="flex:1;">深度综合评测</a>
+            <div style="display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap;">
+              <a href="${a.affiliateUrl}" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-sm" style="flex:1; text-align: center;">官网直达</a>
+              <a href="${relPrefixRoot}airport/${a.slug}/index.html" class="btn btn-secondary btn-sm" style="flex:1; text-align: center;">品牌档案</a>
+              <a href="${relPrefixRoot}review/${a.slug}/index.html" class="btn btn-secondary btn-sm" style="flex:1; text-align: center;">深度评测</a>
             </div>
           </div>
         `).join("")}
@@ -1177,8 +1184,9 @@ function generateAirportProfiles() {
               </div>
             </div>
 
-            <div style="margin-top: 2rem; display: flex; gap: 1rem;">
-              <a href="${relPrefixSub}review/${airport.slug}/index.html" class="btn btn-primary">阅读 ${airport.name} 深度综合评测报告 &rarr;</a>
+            <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="${airport.affiliateUrl}" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary">直达 ${airport.name} 官网开通 &rarr;</a>
+              <a href="${relPrefixSub}review/${airport.slug}/index.html" class="btn btn-secondary">阅读 ${airport.name} 深度综合评测报告 &rarr;</a>
               <a href="${relPrefixSub}compare/index.html" class="btn btn-secondary">与其他机场对比</a>
             </div>
           </div>
@@ -1257,7 +1265,10 @@ function generateReviewPages() {
               <div style="color: #065f46; margin-bottom: 0.25rem;">✓ 优点: ${a.advantages[0]}</div>
               <div style="color: #991b1b;">✕ 注意: ${a.disadvantages[0]}</div>
             </div>
-            <a href="${relPrefixRoot}review/${a.slug}/index.html" class="btn btn-secondary btn-sm" style="width: 100%;">查看详细评测全文 &rarr;</a>
+            <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+              <a href="${a.affiliateUrl}" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-sm" style="flex: 1; text-align: center;">直达官网购买</a>
+              <a href="${relPrefixRoot}review/${a.slug}/index.html" class="btn btn-secondary btn-sm" style="flex: 1; text-align: center;">查看评测全文 &rarr;</a>
+            </div>
           </div>
         `).join("")}
       </div>
@@ -1265,7 +1276,7 @@ function generateReviewPages() {
 
     const html = renderLayout({
       title,
-      description: "2026机场独立综合深度评测大全。坚持实事求是与客观透明，深度拆解TAG VPN、飞鸟云、库洛米、西数及闪电云等品牌的套餐、专线质量与流媒体解锁表现。",
+      description: "2026机场独立综合深度评测大全。坚持实事求是与客观透明，深度拆解隐形人、微风网络、闪跃、浪网、暮光等14大品牌的套餐、专线质量与流媒体解锁表现。",
       canonicalUrl,
       relPrefix: relPrefixRoot,
       activeNav: "review",
@@ -1303,6 +1314,12 @@ function generateReviewPages() {
               <strong>一句话评测结论：</strong><br>
               ${airport.tagline}。实测稳定性得分 <strong>${airport.stabilityScore}</strong>，性价比得分 <strong>${airport.valueScore}</strong>，适合用户群：${airport.suitableFor.join("、")}。
             </div>
+
+            ${airport.coupon ? `
+            <div class="callout callout-warning" style="margin: 1.5rem 0;">
+              <strong>🎁 专属结账优惠券：</strong>
+              在 ${airport.name} 结账时输入优惠码 <code style="font-size: 1.05rem; font-weight: bold; background: #fff; padding: 0.2rem 0.6rem; border-radius: 4px; border: 1px solid #f59e0b; color: #b45309;">${airport.coupon}</code> 即可享受立减折扣！
+            </div>` : ''}
 
             <h2>一、${airport.name} 基本背景与线路架构</h2>
             <p>${airport.description}</p>
@@ -1365,11 +1382,12 @@ function generateReviewPages() {
               </div>
             </div>
 
-            <h2>七、横向关联对比</h2>
+            <h2>七、横向关联对比与官网直达</h2>
             <p>如果您想了解 ${airport.name} 与其他竞品（如 ${otherAirports[0].name}、${otherAirports[1].name}）在价格与配置上的差异，欢迎使用我们的在线工具：</p>
-            <div style="margin-top: 1rem;">
-              <a href="${relPrefixSub}compare/index.html" class="btn btn-primary">进入机场横向多维度比对工具 &rarr;</a>
-              <a href="${relPrefixSub}airport/${airport.slug}/index.html" class="btn btn-secondary" style="margin-left: 0.5rem;">查看品牌参数档案</a>
+            <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="${airport.affiliateUrl}" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary">直达 ${airport.name} 官网开通 &rarr;</a>
+              <a href="${relPrefixSub}compare/index.html" class="btn btn-secondary">进入机场横向多维度比对工具</a>
+              <a href="${relPrefixSub}airport/${airport.slug}/index.html" class="btn btn-secondary">查看品牌参数档案</a>
             </div>
           </div>
         </div>

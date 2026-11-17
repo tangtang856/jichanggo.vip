@@ -107,7 +107,7 @@
 
       <h2>二、AI 专用机场选购要点</h2>
       <ol>
-        <li><strong>确认是否提供标注为「原生IP」或「OpenAI/Claude专线」的节点：</strong>如 <a href="../../airport/kuromis/index.html">Kuromis 库洛米</a> 和 <a href="../../airport/tag-vpn/index.html">TAG VPN</a> 均对 AI 接口做了针对性路由保障。</li>
+        <li><strong>确认是否提供标注为「原生IP」或「OpenAI/Claude专线」的节点：</strong>如 <a href="../../airport/yinxingren/index.html">隐形人</a> 和 <a href="../../airport/breezenet/index.html">微风网络 Breezenet</a> 均对 AI 接口做了针对性路由保障。</li>
         <li><strong>协议支持与 UDP 转发：</strong>确保客户端开启了 UDP 转发支持，部分实时语音对话（如 ChatGPT Voice 模式）依赖 WebRTC 与 UDP 协议，若节点不支持 UDP 将无法正常语音通话。</li>
         <li><strong>分流规则配置：</strong>在 Clash 订阅规则中，确保 <code>OpenAI.yaml</code> 和 <code>Claude.yaml</code> 规则库为最新版本，避免相关 API 域名漏走代理。</li>
       </ol>

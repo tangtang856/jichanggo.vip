@@ -23,7 +23,7 @@ const guidesData = [
 
       <h2>二、导入机场订阅链接</h2>
       <ol>
-        <li>登录您所购买的机场后台（如 <a href="../../airport/flyingbird/index.html">FlyingBird 飞鸟云</a> 或 <a href="../../airport/tag-vpn/index.html">TAG VPN</a> 等）。</li>
+        <li>登录您所购买的机场后台（如 <a href="../../airport/breezenet/index.html">微风网络 Breezenet</a> 或 <a href="../../airport/yinxingren/index.html">隐形人</a> 等）。</li>
         <li>在用户中心找到“便捷导入”或“复制订阅链接”按钮，选择 <strong>Clash 订阅</strong> 并复制该 URL。</li>
         <li>打开 Clash Verge Rev，在左侧导航栏点击 <strong>「订阅（Profiles）」</strong>。</li>
         <li>在顶部输入框粘贴刚才复制的订阅链接，点击 <strong>「导入（Import）」</strong> 按钮。</li>
@@ -93,7 +93,7 @@ const guidesData = [
       <h2>二、Clash Meta for Android 详细配置流程</h2>
       <ol>
         <li>从 GitHub Releases 或可靠渠道下载并安装 Clash Meta 官方 APK 文件。</li>
-        <li>打开手机浏览器，登录您的机场网站账户（例如 <a href="../../airport/flyingbird/index.html">FlyingBird</a>）。</li>
+        <li>打开手机浏览器，登录您的机场网站账户（例如 <a href="../../airport/breezenet/index.html">微风网络 Breezenet</a>）。</li>
         <li>点击「一键导入 Clash」或长按复制订阅链接。</li>
         <li>进入 CMFA 应用，点击 <strong>「配置（Profiles）」</strong> → 点击右上角 <strong>「+」</strong> 号 → 选择 <strong>「URL（从 URL 导入）」</strong>。</li>
         <li>名称可自定义填写（如“我的主力机场”），在 URL 栏粘贴刚才复制的订阅链接，右上角点击保存。</li>
@@ -200,8 +200,8 @@ const blogData = [
       <h2>二、法则二：认清线路底层——IEPL/IPLC 专线 vs 公网隧道中转</h2>
       <p>很多人只看套餐价格，却不看线路底层的架构成本。这直接决定了你在网络敏感时期的上网体验：</p>
       <ul>
-        <li><strong>内网专线（IEPL / IPLC）：</strong>数据在境内入口服务器接收后，通过物理光纤专用内网直接传输到香港或海外机房，完全不经过 GFW 审查。优点是零封锁风险、延迟极低且极度稳定；缺点是带宽成本高昂，套餐单价偏高。代表品牌如 <a href="../../airport/tag-vpn/index.html">TAG VPN</a>、<a href="../../airport/kuromis/index.html">Kuromis</a>。</li>
-        <li><strong>隧道中转：</strong>在国内入口与境外落地之间通过加密协议传输，性价比较高，但敏感时期若入口机房被断网，可能出现阶段性波动。代表品牌如 <a href="../../airport/flyingbird/index.html">FlyingBird 飞鸟云</a>。</li>
+        <li><strong>内网专线（IEPL / IPLC）：</strong>数据在境内入口服务器接收后，通过物理光纤专用内网直接传输到香港或海外机房，完全不经过 GFW 审查。优点是零封锁风险、延迟极低且极度稳定；缺点是带宽成本高昂，套餐单价偏高。代表品牌如 <a href="../../airport/yinxingren/index.html">隐形人</a>、<a href="../../airport/flashleap/index.html">闪跃 FlashLeap</a>。</li>
+        <li><strong>隧道中转：</strong>在国内入口与境外落地之间通过加密协议传输，性价比较高，但敏感时期若入口机房被断网，可能出现阶段性波动。代表品牌如 <a href="../../airport/feimaoyun/index.html">飞猫云</a>。</li>
       </ul>
 
       <h2>三、法则三：警惕“超高倍率”背后的流量虚标陷阱</h2>
@@ -210,7 +210,7 @@ const blogData = [
 
       <h2>四、法则四：明确自己的核心使用场景</h2>
       <ol>
-        <li><strong>如果是搞科研/查资料/写代码：</strong>重点看节点稳定性和 GitHub、Google 连通率，平价机场如 <a href="../../airport/westdata/index.html">WestData</a> 或轻量月付即可胜任。</li>
+        <li><strong>如果是搞科研/查资料/写代码：</strong>重点看节点稳定性和 GitHub、Google 连通率，平价机场如 <a href="../../airport/feiv/index.html">飞V</a> 或轻量月付即可胜任。</li>
         <li><strong>如果是追 Netflix / Disney+ 流媒体：</strong>务必选择标明“原生 IP 解锁”的机场，否则打开 Netflix 只能看没有版权的自制剧。</li>
         <li><strong>如果是日常深度使用 ChatGPT / Claude / Midjourney：</strong>AI 服务商对机房 IP 的封控极为严厉，机房共享 IP 极易被判“Access Denied”。需要选择具有纯净家宽住宅 IP 或专精 AI 解锁的节点服务。</li>
       </ol>
@@ -289,7 +289,7 @@ const blogData = [
       <h2>二、什么是 IPLC 与 IEPL 内网专线？</h2>
       <ul>
         <li><strong>IPLC（International Private Leased Circuit，国际私有租用线路）：</strong>通信服务商在大陆与境外节点（如深圳至香港、上海至日本）之间拉设的端到端专用点对点通信电缆。数据完全在两端专有内网跑，<strong>不经过公共互联网网关，因此根本不会经过 GFW 防火长城的检测</strong>。</li>
-        <li><strong>IEPL（International Ethernet Private Line，国际以太网专线）：</strong>IPLC 的现代化升级版，基于以太网技术构建，具备更高级的抖动控制、二层透明传输和更高的带宽扩容弹性。目前顶级高端机场（如 <a href="../../airport/tag-vpn/index.html">TAG VPN</a>、<a href="../../airport/kuromis/index.html">Kuromis</a>）普遍采用高质量 IEPL 专线。</li>
+        <li><strong>IEPL（International Ethernet Private Line，国际以太网专线）：</strong>IPLC 的现代化升级版，基于以太网技术构建，具备更高级的抖动控制、二层透明传输和更高的带宽扩容弹性。目前顶级高端机场（如 <a href="../../airport/yinxingren/index.html">隐形人</a>、<a href="../../airport/flashleap/index.html">闪跃 FlashLeap</a>）普遍采用高质量 IEPL 专线。</li>
       </ul>
 
       <h2>三、普通公网中转 vs 内网专线的核心对比</h2>
@@ -390,7 +390,7 @@ const blogData = [
 
       <h2>二、AI 专用机场选购要点</h2>
       <ol>
-        <li><strong>确认是否提供标注为「原生IP」或「OpenAI/Claude专线」的节点：</strong>如 <a href="../../airport/kuromis/index.html">Kuromis 库洛米</a> 和 <a href="../../airport/tag-vpn/index.html">TAG VPN</a> 均对 AI 接口做了针对性路由保障。</li>
+        <li><strong>确认是否提供标注为「原生IP」或「OpenAI/Claude专线」的节点：</strong>如 <a href="../../airport/yinxingren/index.html">隐形人</a> 和 <a href="../../airport/breezenet/index.html">微风网络 Breezenet</a> 均对 AI 接口做了针对性路由保障。</li>
         <li><strong>协议支持与 UDP 转发：</strong>确保客户端开启了 UDP 转发支持，部分实时语音对话（如 ChatGPT Voice 模式）依赖 WebRTC 与 UDP 协议，若节点不支持 UDP 将无法正常语音通话。</li>
         <li><strong>分流规则配置：</strong>在 Clash 订阅规则中，确保 <code>OpenAI.yaml</code> 和 <code>Claude.yaml</code> 规则库为最新版本，避免相关 API 域名漏走代理。</li>
       </ol>
@@ -420,7 +420,7 @@ const glossaryData = [
       </ul>
 
       <h2>三、为什么 IPLC 机场相对昂贵？</h2>
-      <p>专线带宽属于企业级昂贵电信资产，通常是按 Mbps 独享带宽每月向电信运营商支付高额租赁费用（每 Gbps 每月费用数万至数十万元人民币）。因此采用真正全专线架构的机场（如 <a href="../../airport/tag-vpn/index.html">TAG VPN</a>），其套餐价格普遍高于普通中转机场。</p>
+      <p>专线带宽属于企业级昂贵电信资产，通常是按 Mbps 独享带宽每月向电信运营商支付高额租赁费用（每 Gbps 每月费用数万至数十万元人民币）。因此采用真正全专线架构的机场（如 <a href="../../airport/yinxingren/index.html">隐形人</a>），其套餐价格普遍高于普通中转机场。</p>
     `
   },
   {
