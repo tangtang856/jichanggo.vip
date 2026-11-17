@@ -309,12 +309,12 @@ function generateHomepage() {
       <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.5rem;">
         <div>
           <h2>客户端配置与使用教程中心</h2>
-          <p style="color: var(--text-muted); font-size: 0.95rem;">覆盖四大主流平台，详解 Clash Verge Rev、Sing-box、小火箭订阅导入与分流配置。</p>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">覆盖四大主流平台与软路由，详解 Clash Verge Rev、Sing-box、小火箭订阅导入与全协议分流配置。</p>
         </div>
-        <a href="${relPrefix}guides/index.html" class="btn btn-secondary btn-sm">全部客户端指南 &rarr;</a>
+        <a href="${relPrefix}guides/index.html" class="btn btn-secondary btn-sm">查看全部 30 篇实操教程 &rarr;</a>
       </div>
       <div class="topic-grid">
-        ${guidesData.map(guide => `
+        ${guidesData.slice(0, 4).map(guide => `
           <div class="card" style="padding: 1.25rem;">
             <span class="badge badge-muted" style="margin-bottom: 0.5rem;">${guide.readTime} 掌握</span>
             <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem;">
@@ -361,10 +361,10 @@ function generateHomepage() {
           <h2>选购指南与出海深度洞察</h2>
           <p style="color: var(--text-muted); font-size: 0.95rem;">原创深度干货，解答翻墙出海中遇到的各种疑难杂症与架构疑云。</p>
         </div>
-        <a href="${relPrefix}blog/index.html" class="btn btn-secondary btn-sm">博客全部文章 &rarr;</a>
+        <a href="${relPrefix}blog/index.html" class="btn btn-secondary btn-sm">查看全部 100 篇专栏博客 &rarr;</a>
       </div>
       <div class="airport-card-grid">
-        ${blogData.slice(0, 3).map(blog => `
+        ${blogData.slice(0, 6).map(blog => `
           <div class="card">
             <span class="badge badge-muted" style="margin-bottom: 0.5rem;">${blog.category}</span>
             <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">
@@ -1534,15 +1534,18 @@ function generateGuidesPages() {
     const content = `
       <h1>全平台科学上网客户端配置与使用教程中心</h1>
       <p style="font-size: 1.05rem; color: var(--text-muted); margin-bottom: 2rem;">
-        覆盖 Windows、Android、iOS 与 macOS 四大主流系统，全面解析主流开源客户端的下载安装、订阅链接导入、分流模式切换、TUN 虚拟网卡开启及常见报错排查。
+        收录 30 篇覆盖 Windows、Android、iOS、macOS、软路由、智能电视、主机与开发者环境的详尽配置实操手册。支持 Clash Verge Rev、Sing-box、小火箭、Surge 等主流客户端订阅导入、TUN 虚拟网卡开启及全场景故障排错。
       </p>
 
       <div class="topic-grid">
         ${guidesData.map(guide => `
           <div class="card" style="padding: 1.5rem;">
-            <span class="badge badge-primary" style="margin-bottom: 0.5rem;">${guide.readTime} 掌握</span>
-            <h3 style="margin-top: 0;"><a href="${relPrefixRoot}guides/${guide.slug}/index.html">${guide.title}</a></h3>
-            <p style="color: var(--text-body); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="badge badge-primary">${guide.group || "系统指南"}</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">${guide.readTime} 掌握</span>
+            </div>
+            <h3 style="margin-top: 0; font-size: 1.15rem;"><a href="${relPrefixRoot}guides/${guide.slug}/index.html">${guide.title.split(' · ')[0]}</a></h3>
+            <p style="color: var(--text-body); font-size: 0.88rem; line-height: 1.6; margin-bottom: 1.25rem;">
               ${guide.metaDesc}
             </p>
             <a href="${relPrefixRoot}guides/${guide.slug}/index.html" class="btn btn-secondary btn-sm">阅读图文配置步骤 &rarr;</a>
@@ -1553,7 +1556,7 @@ function generateGuidesPages() {
 
     const html = renderLayout({
       title,
-      description: "2026全平台科学上网与客户端教程。详解 Windows Clash Verge Rev、Android CMFA、iOS Shadowrocket小火箭及 macOS 客户端的订阅导入与系统代理设置。",
+      description: "2026全平台科学上网与客户端教程。收录 30 篇详尽实操指南，涵盖 Windows、Android、iOS、macOS、软路由及主机的订阅导入与系统代理设置。",
       canonicalUrl,
       relPrefix: relPrefixRoot,
       activeNav: "guides",
@@ -1576,7 +1579,7 @@ function generateGuidesPages() {
       <div class="article-layout">
         <article class="article-main">
           <div class="article-header">
-            <span class="badge badge-primary" style="margin-bottom: 0.5rem;">图文配置指南</span>
+            <span class="badge badge-primary" style="margin-bottom: 0.5rem;">${guide.group || "图文配置指南"}</span>
             <h1>${guide.h1}</h1>
             <div class="article-meta">
               <span>更新时间: ${guide.date}</span>
@@ -1591,11 +1594,12 @@ function generateGuidesPages() {
 
         <aside class="sidebar">
           <div class="sidebar-widget">
-            <h4 class="widget-title">全平台客户端指南</h4>
+            <h4 class="widget-title">推荐热门实操教程</h4>
             <ul class="sidebar-links">
-              ${guidesData.map(g => `
-                <li><a href="${relPrefixSub}guides/${g.slug}/index.html" ${g.slug === guide.slug ? 'style="color: var(--primary); font-weight:700;"' : ''}>${g.shortTitle} &rarr;</a></li>
+              ${guidesData.filter(g => g.slug !== guide.slug).slice(0, 7).map(g => `
+                <li><a href="${relPrefixSub}guides/${g.slug}/index.html">${g.shortTitle} &rarr;</a></li>
               `).join("")}
+              <li><a href="${relPrefixSub}guides/index.html" style="font-weight: 700; color: var(--primary);">查看全部 30 篇实操教程 &rarr;</a></li>
             </ul>
           </div>
           <div class="sidebar-widget">
@@ -1653,17 +1657,20 @@ function generateBlogPages() {
     ];
 
     const content = `
-      <h1>选购指南与出海技术博客</h1>
+      <h1>选购指南与出海技术博客大全</h1>
       <p style="font-size: 1.05rem; color: var(--text-muted); margin-bottom: 2rem;">
-        我们撰写有深度的原创文章，聚焦网络协议原理、真实防坑秘籍、安全隐私防范以及 ChatGPT / Claude 出海工具的配置经验。
+        收录 100 篇深度原创出海长文，涵盖选购决策防坑、ChatGPT/Claude AI 场景、全球流媒体 4K 解锁、跨境电商防关联、外服游戏联机、底层协议科普、网络安全防范与极客开发者环境。
       </p>
 
       <div class="airport-card-grid">
         ${blogData.map(blog => `
           <div class="card">
-            <span class="badge badge-muted" style="margin-bottom: 0.5rem;">${blog.category} · ${blog.readTime}</span>
-            <h3 style="margin-top: 0;"><a href="${relPrefixRoot}blog/${blog.slug}/index.html">${blog.title}</a></h3>
-            <p style="color: var(--text-body); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span class="badge badge-muted">${blog.category}</span>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">${blog.readTime}</span>
+            </div>
+            <h3 style="margin-top: 0; font-size: 1.15rem;"><a href="${relPrefixRoot}blog/${blog.slug}/index.html">${blog.title.split(' · ')[0]}</a></h3>
+            <p style="color: var(--text-body); font-size: 0.88rem; line-height: 1.6; margin-bottom: 1.25rem;">
               ${blog.metaDesc}
             </p>
             <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-muted);">
@@ -1676,8 +1683,8 @@ function generateBlogPages() {
     `;
 
     const html = renderLayout({
-      title,
-      description: "2026科学上网与机场选购博客。包含新手避坑指南、传统VPN与机场区别、BGP/IPLC专线深度解析、网络安全防范及ChatGPT解锁技巧。",
+      title: "科学上网博客与选购指南大全 · 100篇出海干货与深度剖析 | 机场Go",
+      description: "2026科学上网与机场选购博客大全。收录 100 篇原创长文，涵盖新手避坑指南、传统VPN与机场区别、BGP/IPLC专线深度解析、网络安全防范及ChatGPT解锁技巧。",
       canonicalUrl,
       relPrefix: relPrefixRoot,
       activeNav: "blog",
@@ -1693,7 +1700,7 @@ function generateBlogPages() {
     const breadcrumbs = [
       { name: "首页", url: `${relPrefixSub}index.html` },
       { name: "博客总览", url: `${relPrefixSub}blog/index.html` },
-      { name: blog.title.split('？')[0].split('：')[0], url: `${relPrefixSub}blog/${blog.slug}/index.html` }
+      { name: blog.title.split('？')[0].split('：')[0].slice(0, 16), url: `${relPrefixSub}blog/${blog.slug}/index.html` }
     ];
 
     const content = `
@@ -1715,11 +1722,12 @@ function generateBlogPages() {
 
         <aside class="sidebar">
           <div class="sidebar-widget">
-            <h4 class="widget-title">最新专栏文章</h4>
+            <h4 class="widget-title">相关专栏深度长文</h4>
             <ul class="sidebar-links">
-              ${blogData.map(b => `
-                <li><a href="${relPrefixSub}blog/${b.slug}/index.html" ${b.slug === blog.slug ? 'style="color: var(--primary); font-weight:700;"' : ''}>${b.title}</a></li>
+              ${blogData.filter(b => b.category === blog.category && b.slug !== blog.slug).slice(0, 5).concat(blogData.filter(b => b.slug !== blog.slug).slice(0, 3)).slice(0, 7).map(b => `
+                <li><a href="${relPrefixSub}blog/${b.slug}/index.html">${b.title.split(' · ')[0]} &rarr;</a></li>
               `).join("")}
+              <li><a href="${relPrefixSub}blog/index.html" style="font-weight: 700; color: var(--primary);">查看全部 100 篇专栏博客 &rarr;</a></li>
             </ul>
           </div>
 
