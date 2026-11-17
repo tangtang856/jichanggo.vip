@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iOS 苹果手机科学上网教程 · Shadowrocket 小火箭与 Loon 配置指南 | 机场Go</title>
+  <meta name="description" content="2026苹果 iPhone / iPad 科学上网配置图文教程。详解美区 Apple ID 获取、Shadowrocket（小火箭）安装、机场节点扫码与订阅导入、分流规则更新。">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://jichanggo.vip/guides/ios/">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="iOS 苹果手机科学上网教程 · Shadowrocket 小火箭与 Loon 配置指南 | 机场Go">
+  <meta property="og:description" content="2026苹果 iPhone / iPad 科学上网配置图文教程。详解美区 Apple ID 获取、Shadowrocket（小火箭）安装、机场节点扫码与订阅导入、分流规则更新。">
+  <meta property="og:url" content="https://jichanggo.vip/guides/ios/">
+  <meta property="og:site_name" content="机场Go (JichangGo.vip)">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="iOS 苹果手机科学上网教程 · Shadowrocket 小火箭与 Loon 配置指南 | 机场Go">
+  <meta name="twitter:description" content="2026苹果 iPhone / iPad 科学上网配置图文教程。详解美区 Apple ID 获取、Shadowrocket（小火箭）安装、机场节点扫码与订阅导入、分流规则更新。">
+  <!-- 严格相对路径加载 CSS -->
+  <link rel="stylesheet" href="../../css/style.css">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "iOS 苹果手机科学上网教程 · Shadowrocket 小火箭与 Loon 配置指南",
+  "description": "2026苹果 iPhone / iPad 科学上网配置图文教程。详解美区 Apple ID 获取、Shadowrocket（小火箭）安装、机场节点扫码与订阅导入、分流规则更新。",
+  "datePublished": "2026-03-12",
+  "author": {
+    "@type": "Organization",
+    "name": "机场Go技术组"
+  }
+}</script>
+</head>
+<body>
+  
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../../index.html" class="site-logo">
+        <span class="badge-logo">机场Go</span>
+        <span>JichangGo.vip</span>
+      </a>
+      <nav>
+        <ul class="nav-desktop">
+          <li><a href="../../index.html" class="nav-link ">首页</a></li>
+          <li><a href="../../recommend/index.html" class="nav-link ">机场推荐</a></li>
+          <li><a href="../../ranking/index.html" class="nav-link ">机场排行</a></li>
+          <li><a href="../../review/index.html" class="nav-link ">独立评测</a></li>
+          <li><a href="../../compare/index.html" class="nav-link ">机场对比</a></li>
+          <li><a href="../../guides/index.html" class="nav-link active">使用教程</a></li>
+          <li><a href="../../blog/index.html" class="nav-link ">选购指南</a></li>
+          <li><a href="../../glossary/index.html" class="nav-link ">知识百科</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="../../compare/index.html" class="btn btn-primary btn-sm">横向对比</a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="展开导航菜单" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-nav" class="nav-mobile">
+      <ul class="nav-mobile-list">
+        <li><a href="../../index.html" class="nav-mobile-link ">首页</a></li>
+        <li><a href="../../recommend/index.html" class="nav-mobile-link ">机场推荐专题</a></li>
+        <li><a href="../../ranking/index.html" class="nav-mobile-link ">多维度排行榜</a></li>
+        <li><a href="../../review/index.html" class="nav-mobile-link ">机场独立深度评测</a></li>
+        <li><a href="../../compare/index.html" class="nav-mobile-link ">机场在线对比工具</a></li>
+        <li><a href="../../guides/index.html" class="nav-mobile-link active">全平台客户端教程</a></li>
+        <li><a href="../../blog/index.html" class="nav-mobile-link ">博客与选购技巧</a></li>
+        <li><a href="../../glossary/index.html" class="nav-mobile-link ">网络术语与知识百科</a></li>
+        <li><a href="../../about/index.html" class="nav-mobile-link">关于我们与评测标准</a></li>
+      </ul>
+    </div>
+  </header>
+  <main class="main-content">
+    <div class="container">
+      
+  <nav class="breadcrumb-nav" aria-label="面包屑路径导航">
+    <ul class="breadcrumb-list">
+      <li><a href="../../index.html">首页</a></li><li class="breadcrumb-separator">/</li><li><a href="../../guides/index.html">教程中心</a></li><li class="breadcrumb-separator">/</li><li><span class="text-main" aria-current="page">iOS 小火箭教程</span></li>
+    </ul>
+  </nav>
+      
+      <div class="article-layout">
+        <article class="article-main">
+          <div class="article-header">
+            <span class="badge badge-primary" style="margin-bottom: 0.5rem;">图文配置指南</span>
+            <h1>iOS 苹果手机科学上网教程：Shadowrocket 小火箭与 Loon 节点配置指南</h1>
+            <div class="article-meta">
+              <span>更新时间: 2026-03-12</span>
+              <span>阅读时间: 7 分钟</span>
+              <span>作者: 机场Go技术组</span>
+            </div>
+          </div>
+          <div class="article-body">
+            
+      <p>苹果 iOS 系统的安全性与生态限制与 Android 有很大差异。在中国大陆地区 App Store 中，所有代理相关应用均未上架。因此，iOS 用户科学上网的第一步也是最关键的一步，是准备一个<strong>海外地区（如美区、日区、港区）的 Apple ID</strong>。</p>
+
+      <h2>一、前期准备：获取海外 Apple ID 与 Shadowrocket</h2>
+      <p>目前 iOS 平台最流行、普及率最高的梯子客户端为 <strong>Shadowrocket（俗称小火箭，售价 $2.99 美元）</strong>，进阶极客用户亦可选择 Loon、Quantumult X 或 Surge。</p>
+      <ul>
+        <li><strong>海外 Apple ID：</strong>可通过苹果官网自行免费注册（选择美国地区，地址填免税州如俄勒冈），或在合规第三方平台购买已兑换好小火箭的现成账号。</li>
+        <li><strong>切记注意：</strong>海外 Apple ID 只能在 <strong>App Store 应用商店</strong> 登录，<strong>严禁在手机「系统设置」的 iCloud 中登录</strong>，以防手机被意外锁死或隐私同步风险！</li>
+      </ul>
+
+      <h2>二、Shadowrocket 小火箭订阅导入</h2>
+      <p>下载好小火箭后，将订阅节点导入非常简单，支持以下两种最便捷的方式：</p>
+      <ol>
+        <li><strong>方式 A：一键唤醒导入（推荐）</strong><br>用 Safari 浏览器登录机场后台，点击「一键导入到 Shadowrocket」，系统会自动唤醒小火箭并完成节点同步。</li>
+        <li><strong>方式 B：手动添加订阅 URL</strong><br>在机场复制订阅链接 → 打开小火箭，点击右上角「+」号 → 类型选择 <strong>「Subscribe（订阅）」</strong> → 在 URL 栏粘贴链接，备注填写机场名称 → 点击右上角保存。</li>
+      </ol>
+
+      <h2>三、全局路由与常用分流规则设置</h2>
+      <p>小火箭首页正下方有 <strong>「全局路由」</strong> 选项，点击可进行切换：</p>
+      <ul>
+        <li><strong>配置（Config）：【必选】</strong>类似 PC 端的规则分流。小火箭内置了大陆域名直连列表，国内网络走本地网络，外网访问走选中的节点。</li>
+        <li><strong>代理（Proxy）：</strong>全部流量走代理。</li>
+        <li><strong>直连（Direct）：</strong>全部直连。</li>
+      </ul>
+      <blockquote>
+        <p><strong>进阶提示：</strong>在小火箭底部点击「配置」选项卡，定期点击 <code>default.conf</code> 后的感叹号，选择从网络更新规则库，可以保证国内最新网站不被误判走代理，有效节省套餐流量。</p>
+      </blockquote>
+    
+          </div>
+        </article>
+
+        <aside class="sidebar">
+          <div class="sidebar-widget">
+            <h4 class="widget-title">全平台客户端指南</h4>
+            <ul class="sidebar-links">
+              
+                <li><a href="../../guides/windows/index.html" >Windows 配置教程 &rarr;</a></li>
+              
+                <li><a href="../../guides/android/index.html" >Android 配置教程 &rarr;</a></li>
+              
+                <li><a href="../../guides/ios/index.html" style="color: var(--primary); font-weight:700;">iOS 小火箭教程 &rarr;</a></li>
+              
+                <li><a href="../../guides/macos/index.html" >macOS 配置教程 &rarr;</a></li>
+              
+            </ul>
+          </div>
+          <div class="sidebar-widget">
+            <h4 class="widget-title">相关基础知识科普</h4>
+            <ul class="sidebar-links">
+              <li><a href="../../glossary/rules-and-routing/index.html">分流规则与路由模式解析</a></li>
+              <li><a href="../../glossary/dns-leak/index.html">DNS 泄露原理与本地防范</a></li>
+              <li><a href="../../glossary/shadowsocks-vless-hysteria2/index.html">常用代理协议全方位对比</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    
+    </div>
+  </main>
+  
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>机场Go (JichangGo.vip)</h4>
+          <p>专注于中文科学上网、优质机场推荐、梯子与 VPN 节点深度评测的独立技术资讯门户。坚持客观、透明、可验证的测试原则，拒绝虚构测速与虚假参数，帮助用户安全高效出海。</p>
+          <div style="margin-top: 1rem;">
+            <span class="badge badge-primary">Bing SEO 优化站</span>
+            <span class="badge badge-success" style="margin-left: 0.5rem;">客观独立评测</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>核心专题</h5>
+          <ul class="footer-links">
+            <li><a href="../../recommend/budget/index.html">平价性价比机场</a></li>
+            <li><a href="../../recommend/premium/index.html">高端稳定专线</a></li>
+            <li><a href="../../recommend/beginner/index.html">新手一键客户端</a></li>
+            <li><a href="../../recommend/ai/index.html">ChatGPT / AI专用节点</a></li>
+            <li><a href="../../recommend/streaming/index.html">流媒体 4K 解锁</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>教程与工具</h5>
+          <ul class="footer-links">
+            <li><a href="../../compare/index.html">机场横向对比工具</a></li>
+            <li><a href="../../ranking/overall/index.html">综合实力排行榜</a></li>
+            <li><a href="../../guides/windows/index.html">Windows 配置指南</a></li>
+            <li><a href="../../guides/android/index.html">Android 翻墙配置</a></li>
+            <li><a href="../../guides/ios/index.html">iOS 小火箭教程</a></li>
+            <li><a href="../../guides/macos/index.html">macOS 客户端教程</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>关于与政策</h5>
+          <ul class="footer-links">
+            <li><a href="../../about/index.html">关于本站</a></li>
+            <li><a href="../../editorial-policy/index.html">编辑政策与评测标准</a></li>
+            <li><a href="../../contact/index.html">联系我们与商务反馈</a></li>
+            <li><a href="../../privacy-policy/index.html">隐私权保护政策</a></li>
+            <li><a href="../../disclaimer/index.html">法律免责声明</a></li>
+            <li><a href="../../sitemap.xml">XML 网站地图</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 JichangGo.vip 版权所有 · 机场推荐与VPN节点选购指南 · 纯静态秒开架构</div>
+        <div>
+          <span>本站仅提供网络技术科普与客观信息整理，请遵守所在地法律法规。</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../../js/main.js"></script>
+  
+</body>
+</html>

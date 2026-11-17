@@ -1,0 +1,11 @@
+# robots.txt for https://jichanggo.vip
+User-agent: *
+Allow: /
+Disallow: /404.html
+
+# Bingbot & Googlebot Specific Guidelines
+User-agent: bingbot
+Allow: /
+Crawl-delay: 1
+
+Sitemap: https://jichanggo.vip/sitemap.xml

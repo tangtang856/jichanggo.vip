@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windows 电脑科学上网教程 · Clash Verge Rev 与 Sing-box 客户端配置指南 | 机场Go</title>
+  <meta name="description" content="2026最新 Windows 电脑梯子与机场节点配置图文教程。详解 Clash Verge Rev 与 Sing-box 客户端下载、订阅导入、TUN 虚拟网卡模式开启及常见连不上报错排查。">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://jichanggo.vip/guides/windows/">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Windows 电脑科学上网教程 · Clash Verge Rev 与 Sing-box 客户端配置指南 | 机场Go">
+  <meta property="og:description" content="2026最新 Windows 电脑梯子与机场节点配置图文教程。详解 Clash Verge Rev 与 Sing-box 客户端下载、订阅导入、TUN 虚拟网卡模式开启及常见连不上报错排查。">
+  <meta property="og:url" content="https://jichanggo.vip/guides/windows/">
+  <meta property="og:site_name" content="机场Go (JichangGo.vip)">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Windows 电脑科学上网教程 · Clash Verge Rev 与 Sing-box 客户端配置指南 | 机场Go">
+  <meta name="twitter:description" content="2026最新 Windows 电脑梯子与机场节点配置图文教程。详解 Clash Verge Rev 与 Sing-box 客户端下载、订阅导入、TUN 虚拟网卡模式开启及常见连不上报错排查。">
+  <!-- 严格相对路径加载 CSS -->
+  <link rel="stylesheet" href="../../css/style.css">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Windows 电脑科学上网教程 · Clash Verge Rev 与 Sing-box 客户端配置指南",
+  "description": "2026最新 Windows 电脑梯子与机场节点配置图文教程。详解 Clash Verge Rev 与 Sing-box 客户端下载、订阅导入、TUN 虚拟网卡模式开启及常见连不上报错排查。",
+  "datePublished": "2026-03-14",
+  "author": {
+    "@type": "Organization",
+    "name": "机场Go技术组"
+  }
+}</script>
+</head>
+<body>
+  
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../../index.html" class="site-logo">
+        <span class="badge-logo">机场Go</span>
+        <span>JichangGo.vip</span>
+      </a>
+      <nav>
+        <ul class="nav-desktop">
+          <li><a href="../../index.html" class="nav-link ">首页</a></li>
+          <li><a href="../../recommend/index.html" class="nav-link ">机场推荐</a></li>
+          <li><a href="../../ranking/index.html" class="nav-link ">机场排行</a></li>
+          <li><a href="../../review/index.html" class="nav-link ">独立评测</a></li>
+          <li><a href="../../compare/index.html" class="nav-link ">机场对比</a></li>
+          <li><a href="../../guides/index.html" class="nav-link active">使用教程</a></li>
+          <li><a href="../../blog/index.html" class="nav-link ">选购指南</a></li>
+          <li><a href="../../glossary/index.html" class="nav-link ">知识百科</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="../../compare/index.html" class="btn btn-primary btn-sm">横向对比</a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="展开导航菜单" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-nav" class="nav-mobile">
+      <ul class="nav-mobile-list">
+        <li><a href="../../index.html" class="nav-mobile-link ">首页</a></li>
+        <li><a href="../../recommend/index.html" class="nav-mobile-link ">机场推荐专题</a></li>
+        <li><a href="../../ranking/index.html" class="nav-mobile-link ">多维度排行榜</a></li>
+        <li><a href="../../review/index.html" class="nav-mobile-link ">机场独立深度评测</a></li>
+        <li><a href="../../compare/index.html" class="nav-mobile-link ">机场在线对比工具</a></li>
+        <li><a href="../../guides/index.html" class="nav-mobile-link active">全平台客户端教程</a></li>
+        <li><a href="../../blog/index.html" class="nav-mobile-link ">博客与选购技巧</a></li>
+        <li><a href="../../glossary/index.html" class="nav-mobile-link ">网络术语与知识百科</a></li>
+        <li><a href="../../about/index.html" class="nav-mobile-link">关于我们与评测标准</a></li>
+      </ul>
+    </div>
+  </header>
+  <main class="main-content">
+    <div class="container">
+      
+  <nav class="breadcrumb-nav" aria-label="面包屑路径导航">
+    <ul class="breadcrumb-list">
+      <li><a href="../../index.html">首页</a></li><li class="breadcrumb-separator">/</li><li><a href="../../guides/index.html">教程中心</a></li><li class="breadcrumb-separator">/</li><li><span class="text-main" aria-current="page">Windows 配置教程</span></li>
+    </ul>
+  </nav>
+      
+      <div class="article-layout">
+        <article class="article-main">
+          <div class="article-header">
+            <span class="badge badge-primary" style="margin-bottom: 0.5rem;">图文配置指南</span>
+            <h1>Windows 电脑科学上网配置指南：Clash Verge Rev 订阅导入与 TUN 模式详解</h1>
+            <div class="article-meta">
+              <span>更新时间: 2026-03-14</span>
+              <span>阅读时间: 6 分钟</span>
+              <span>作者: 机场Go技术组</span>
+            </div>
+          </div>
+          <div class="article-body">
+            
+      <p>在 Windows 操作系统中，使用机场节点或 VPN 梯子进行科学上网，目前主流且维护活跃的核心客户端为 <strong>Clash Verge Rev</strong> 以及基于新一代核心的 <strong>Sing-box</strong>。本指南以目前用户体验最佳、界面现代的 Clash Verge Rev 为例，带您一步步完成从下载安装到节点订阅、模式选择的完整流程。</p>
+      
+      <h2>一、客户端下载与安装</h2>
+      <p>请认准官方开源维护地址，避免通过第三方不明下载站下载被植入木马或广告的篡改版本：</p>
+      <ul>
+        <li><strong>推荐工具：</strong>Clash Verge Rev（支持 Clash Meta / Mihomo 新核心）</li>
+        <li><strong>系统要求：</strong>Windows 10 / Windows 11 64 位操作系统</li>
+        <li><strong>安装步骤：</strong>下载 <code>.exe</code> 或 <code>.msi</code> 安装包后正常双击安装，初次启动时若弹出 Windows Defender 防火墙网络访问提示，请务必勾选“专用网络”和“公用网络”并点击允许。</li>
+      </ul>
+
+      <h2>二、导入机场订阅链接</h2>
+      <ol>
+        <li>登录您所购买的机场后台（如 <a href="../../airport/flyingbird/index.html">FlyingBird 飞鸟云</a> 或 <a href="../../airport/tag-vpn/index.html">TAG VPN</a> 等）。</li>
+        <li>在用户中心找到“便捷导入”或“复制订阅链接”按钮，选择 <strong>Clash 订阅</strong> 并复制该 URL。</li>
+        <li>打开 Clash Verge Rev，在左侧导航栏点击 <strong>「订阅（Profiles）」</strong>。</li>
+        <li>在顶部输入框粘贴刚才复制的订阅链接，点击 <strong>「导入（Import）」</strong> 按钮。</li>
+        <li>导入成功后，鼠标右键点击该订阅配置，选择 <strong>「使用（Select）」</strong>。</li>
+      </ol>
+
+      <h2>三、选择代理节点与路由分流</h2>
+      <p>导入成功后，点击左侧 <strong>「代理（Proxies）」</strong> 菜单进入节点控制面板：</p>
+      <ul>
+        <li><strong>规则模式（Rule）：</strong>【强烈推荐】系统会自动识别访问的目标网站。访问国内网站（如百度、淘宝、B站）走直连不消耗翻墙流量；访问海外受限网站（Google、YouTube、GitHub）自动走机场节点。</li>
+        <li><strong>全局模式（Global）：</strong>无论访问国内还是海外网站，全部强行通过代理节点。仅在遇到极特殊排错需求时临时开启，日常使用易导致国内应用卡顿或账号风控。</li>
+        <li><strong>直连模式（Direct）：</strong>完全不走任何代理，相当于直接连网。</li>
+      </ul>
+
+      <h2>四、开启 TUN 虚拟网卡模式（解决部分软件不走代理）</h2>
+      <p>默认情况下，Clash 采用系统 HTTP 代理协议，部分不遵循系统代理的软件（如命令行终端 CMD/PowerShell、部分游戏客户端、Git 同步、Telegram 桌面版）可能无法正常科学上网。开启 TUN 模式即可解决：</p>
+      <blockquote>
+        <p><strong>开启方法：</strong>在 Clash Verge Rev 左侧进入「设置（Settings）」→ 找到「服务模式（Service Mode）」并点击安装 → 安装完成后将「TUN 模式（Tun Mode）」开关打开即可接管整机所有网络流量。</p>
+      </blockquote>
+
+      <h2>五、常见问题与连不上排查</h2>
+      <ul>
+        <li><strong>问题 1：节点测试延迟全部 Timeout 超时？</strong><br>排查原因：系统时间存在误差。Windows 任务栏右下角时间必须与北京时间误差在 60 秒以内，否则 TLS 加密握手会被服务端拒绝。请在 Windows 设置中点击“立即同步时间”。</li>
+        <li><strong>问题 2：浏览器打不开网页，提示代理服务器拒绝连接？</strong><br>排查原因：上次关机前未正常关闭系统代理。打开 Windows 设置 → 网络和 Internet → 代理 → 将“使用代理服务器”手动关闭即可。</li>
+      </ul>
+    
+          </div>
+        </article>
+
+        <aside class="sidebar">
+          <div class="sidebar-widget">
+            <h4 class="widget-title">全平台客户端指南</h4>
+            <ul class="sidebar-links">
+              
+                <li><a href="../../guides/windows/index.html" style="color: var(--primary); font-weight:700;">Windows 配置教程 &rarr;</a></li>
+              
+                <li><a href="../../guides/android/index.html" >Android 配置教程 &rarr;</a></li>
+              
+                <li><a href="../../guides/ios/index.html" >iOS 小火箭教程 &rarr;</a></li>
+              
+                <li><a href="../../guides/macos/index.html" >macOS 配置教程 &rarr;</a></li>
+              
+            </ul>
+          </div>
+          <div class="sidebar-widget">
+            <h4 class="widget-title">相关基础知识科普</h4>
+            <ul class="sidebar-links">
+              <li><a href="../../glossary/rules-and-routing/index.html">分流规则与路由模式解析</a></li>
+              <li><a href="../../glossary/dns-leak/index.html">DNS 泄露原理与本地防范</a></li>
+              <li><a href="../../glossary/shadowsocks-vless-hysteria2/index.html">常用代理协议全方位对比</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    
+    </div>
+  </main>
+  
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>机场Go (JichangGo.vip)</h4>
+          <p>专注于中文科学上网、优质机场推荐、梯子与 VPN 节点深度评测的独立技术资讯门户。坚持客观、透明、可验证的测试原则，拒绝虚构测速与虚假参数，帮助用户安全高效出海。</p>
+          <div style="margin-top: 1rem;">
+            <span class="badge badge-primary">Bing SEO 优化站</span>
+            <span class="badge badge-success" style="margin-left: 0.5rem;">客观独立评测</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>核心专题</h5>
+          <ul class="footer-links">
+            <li><a href="../../recommend/budget/index.html">平价性价比机场</a></li>
+            <li><a href="../../recommend/premium/index.html">高端稳定专线</a></li>
+            <li><a href="../../recommend/beginner/index.html">新手一键客户端</a></li>
+            <li><a href="../../recommend/ai/index.html">ChatGPT / AI专用节点</a></li>
+            <li><a href="../../recommend/streaming/index.html">流媒体 4K 解锁</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>教程与工具</h5>
+          <ul class="footer-links">
+            <li><a href="../../compare/index.html">机场横向对比工具</a></li>
+            <li><a href="../../ranking/overall/index.html">综合实力排行榜</a></li>
+            <li><a href="../../guides/windows/index.html">Windows 配置指南</a></li>
+            <li><a href="../../guides/android/index.html">Android 翻墙配置</a></li>
+            <li><a href="../../guides/ios/index.html">iOS 小火箭教程</a></li>
+            <li><a href="../../guides/macos/index.html">macOS 客户端教程</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>关于与政策</h5>
+          <ul class="footer-links">
+            <li><a href="../../about/index.html">关于本站</a></li>
+            <li><a href="../../editorial-policy/index.html">编辑政策与评测标准</a></li>
+            <li><a href="../../contact/index.html">联系我们与商务反馈</a></li>
+            <li><a href="../../privacy-policy/index.html">隐私权保护政策</a></li>
+            <li><a href="../../disclaimer/index.html">法律免责声明</a></li>
+            <li><a href="../../sitemap.xml">XML 网站地图</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 JichangGo.vip 版权所有 · 机场推荐与VPN节点选购指南 · 纯静态秒开架构</div>
+        <div>
+          <span>本站仅提供网络技术科普与客观信息整理，请遵守所在地法律法规。</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../../js/main.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Android 安卓手机科学上网指南 · Clash 与 v2rayNG 节点导入教程 | 机场Go</title>
+  <meta name="description" content="2026安卓手机科学上网新手指南。详述 Clash Meta for Android (CMFA) 与 v2rayNG 客户端安装、订阅配置、绕过大陆局域网及电池省电白名单设置。">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://jichanggo.vip/guides/android/">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Android 安卓手机科学上网指南 · Clash 与 v2rayNG 节点导入教程 | 机场Go">
+  <meta property="og:description" content="2026安卓手机科学上网新手指南。详述 Clash Meta for Android (CMFA) 与 v2rayNG 客户端安装、订阅配置、绕过大陆局域网及电池省电白名单设置。">
+  <meta property="og:url" content="https://jichanggo.vip/guides/android/">
+  <meta property="og:site_name" content="机场Go (JichangGo.vip)">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Android 安卓手机科学上网指南 · Clash 与 v2rayNG 节点导入教程 | 机场Go">
+  <meta name="twitter:description" content="2026安卓手机科学上网新手指南。详述 Clash Meta for Android (CMFA) 与 v2rayNG 客户端安装、订阅配置、绕过大陆局域网及电池省电白名单设置。">
+  <!-- 严格相对路径加载 CSS -->
+  <link rel="stylesheet" href="../../css/style.css">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Android 安卓手机科学上网指南 · Clash 与 v2rayNG 节点导入教程",
+  "description": "2026安卓手机科学上网新手指南。详述 Clash Meta for Android (CMFA) 与 v2rayNG 客户端安装、订阅配置、绕过大陆局域网及电池省电白名单设置。",
+  "datePublished": "2026-03-13",
+  "author": {
+    "@type": "Organization",
+    "name": "机场Go技术组"
+  }
+}</script>
+</head>
+<body>
+  
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../../index.html" class="site-logo">
+        <span class="badge-logo">机场Go</span>
+        <span>JichangGo.vip</span>
+      </a>
+      <nav>
+        <ul class="nav-desktop">
+          <li><a href="../../index.html" class="nav-link ">首页</a></li>
+          <li><a href="../../recommend/index.html" class="nav-link ">机场推荐</a></li>
+          <li><a href="../../ranking/index.html" class="nav-link ">机场排行</a></li>
+          <li><a href="../../review/index.html" class="nav-link ">独立评测</a></li>
+          <li><a href="../../compare/index.html" class="nav-link ">机场对比</a></li>
+          <li><a href="../../guides/index.html" class="nav-link active">使用教程</a></li>
+          <li><a href="../../blog/index.html" class="nav-link ">选购指南</a></li>
+          <li><a href="../../glossary/index.html" class="nav-link ">知识百科</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="../../compare/index.html" class="btn btn-primary btn-sm">横向对比</a>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="展开导航菜单" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-nav" class="nav-mobile">
+      <ul class="nav-mobile-list">
+        <li><a href="../../index.html" class="nav-mobile-link ">首页</a></li>
+        <li><a href="../../recommend/index.html" class="nav-mobile-link ">机场推荐专题</a></li>
+        <li><a href="../../ranking/index.html" class="nav-mobile-link ">多维度排行榜</a></li>
+        <li><a href="../../review/index.html" class="nav-mobile-link ">机场独立深度评测</a></li>
+        <li><a href="../../compare/index.html" class="nav-mobile-link ">机场在线对比工具</a></li>
+        <li><a href="../../guides/index.html" class="nav-mobile-link active">全平台客户端教程</a></li>
+        <li><a href="../../blog/index.html" class="nav-mobile-link ">博客与选购技巧</a></li>
+        <li><a href="../../glossary/index.html" class="nav-mobile-link ">网络术语与知识百科</a></li>
+        <li><a href="../../about/index.html" class="nav-mobile-link">关于我们与评测标准</a></li>
+      </ul>
+    </div>
+  </header>
+  <main class="main-content">
+    <div class="container">
+      
+  <nav class="breadcrumb-nav" aria-label="面包屑路径导航">
+    <ul class="breadcrumb-list">
+      <li><a href="../../index.html">首页</a></li><li class="breadcrumb-separator">/</li><li><a href="../../guides/index.html">教程中心</a></li><li class="breadcrumb-separator">/</li><li><span class="text-main" aria-current="page">Android 配置教程</span></li>
+    </ul>
+  </nav>
+      
+      <div class="article-layout">
+        <article class="article-main">
+          <div class="article-header">
+            <span class="badge badge-primary" style="margin-bottom: 0.5rem;">图文配置指南</span>
+            <h1>Android 安卓手机科学上网指南：Clash 与 v2rayNG 详细使用教程</h1>
+            <div class="article-meta">
+              <span>更新时间: 2026-03-13</span>
+              <span>阅读时间: 5 分钟</span>
+              <span>作者: 机场Go技术组</span>
+            </div>
+          </div>
+          <div class="article-body">
+            
+      <p>Android 平台因其高度开放的特性，拥有非常丰富且强大的代理工具。目前最推荐的主流工具为 <strong>Clash Meta for Android (CMFA)</strong> 与轻量级的 <strong>v2rayNG</strong>。本文将针对安卓系统独特的系统后台杀进程、权限授予及节点订阅进行全面拆解。</p>
+
+      <h2>一、常用安卓代理客户端对比</h2>
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>客户端名称</th>
+              <th>适用人群</th>
+              <th>优势特点</th>
+              <th>支持协议</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Clash Meta (CMFA)</strong></td>
+              <td>日常综合使用、追剧</td>
+              <td>UI 精美、自动分流规则完善、多节点策略组切换便捷</td>
+              <td>Shadowsocks, Trojan, Vmess, VLESS, Hysteria2</td>
+            </tr>
+            <tr>
+              <td><strong>v2rayNG</strong></td>
+              <td>轻量需求、备用救急</td>
+              <td>启动极快、占用内存微小、单一节点调试直观</td>
+              <td>Vmess, VLESS, Trojan, Shadowsocks</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>二、Clash Meta for Android 详细配置流程</h2>
+      <ol>
+        <li>从 GitHub Releases 或可靠渠道下载并安装 Clash Meta 官方 APK 文件。</li>
+        <li>打开手机浏览器，登录您的机场网站账户（例如 <a href="../../airport/flyingbird/index.html">FlyingBird</a>）。</li>
+        <li>点击「一键导入 Clash」或长按复制订阅链接。</li>
+        <li>进入 CMFA 应用，点击 <strong>「配置（Profiles）」</strong> → 点击右上角 <strong>「+」</strong> 号 → 选择 <strong>「URL（从 URL 导入）」</strong>。</li>
+        <li>名称可自定义填写（如“我的主力机场”），在 URL 栏粘贴刚才复制的订阅链接，右上角点击保存。</li>
+        <li>返回主界面，点击灰色的 <strong>「点击启动」</strong> 开关。系统会弹出 VPN 连接请求，点击“确定”。</li>
+        <li>点击 <strong>「代理」</strong> 选项卡，选择所需的国家地区节点（推荐选择延迟较低的香港、日本或新加坡节点）。</li>
+      </ol>
+
+      <h2>三、安卓系统必须设置的两个防掉线关键项</h2>
+      <p>很多安卓用户常反馈：“刚连上好好的，锁屏几分钟后再打开手机就断开了”，这几乎全部是因为国产安卓系统（MIUI/HyperOS、OriginOS、ColorOS、EMUI）激进的省电优化杀后台导致的：</p>
+      <ul>
+        <li><strong>1. 锁定后台应用：</strong>在手机多任务卡片界面，长按 Clash Meta 卡片，点击“小锁”图标锁定后台。</li>
+        <li><strong>2. 电池优化设置为无限制：</strong>长按桌面 Clash 图标 → 应用信息 → 电池优化（或省电策略） → 将“智能省电”更改为 <strong>“无限制（允许后台活动）”</strong>。</li>
+      </ul>
+    
+          </div>
+        </article>
+
+        <aside class="sidebar">
+          <div class="sidebar-widget">
+            <h4 class="widget-title">全平台客户端指南</h4>
+            <ul class="sidebar-links">
+              
+                <li><a href="../../guides/windows/index.html" >Windows 配置教程 &rarr;</a></li>
+              
+                <li><a href="../../guides/android/index.html" style="color: var(--primary); font-weight:700;">Android 配置教程 &rarr;</a></li>
+              
+                <li><a href="../../guides/ios/index.html" >iOS 小火箭教程 &rarr;</a></li>
+              
+                <li><a href="../../guides/macos/index.html" >macOS 配置教程 &rarr;</a></li>
+              
+            </ul>
+          </div>
+          <div class="sidebar-widget">
+            <h4 class="widget-title">相关基础知识科普</h4>
+            <ul class="sidebar-links">
+              <li><a href="../../glossary/rules-and-routing/index.html">分流规则与路由模式解析</a></li>
+              <li><a href="../../glossary/dns-leak/index.html">DNS 泄露原理与本地防范</a></li>
+              <li><a href="../../glossary/shadowsocks-vless-hysteria2/index.html">常用代理协议全方位对比</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    
+    </div>
+  </main>
+  
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>机场Go (JichangGo.vip)</h4>
+          <p>专注于中文科学上网、优质机场推荐、梯子与 VPN 节点深度评测的独立技术资讯门户。坚持客观、透明、可验证的测试原则，拒绝虚构测速与虚假参数，帮助用户安全高效出海。</p>
+          <div style="margin-top: 1rem;">
+            <span class="badge badge-primary">Bing SEO 优化站</span>
+            <span class="badge badge-success" style="margin-left: 0.5rem;">客观独立评测</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>核心专题</h5>
+          <ul class="footer-links">
+            <li><a href="../../recommend/budget/index.html">平价性价比机场</a></li>
+            <li><a href="../../recommend/premium/index.html">高端稳定专线</a></li>
+            <li><a href="../../recommend/beginner/index.html">新手一键客户端</a></li>
+            <li><a href="../../recommend/ai/index.html">ChatGPT / AI专用节点</a></li>
+            <li><a href="../../recommend/streaming/index.html">流媒体 4K 解锁</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>教程与工具</h5>
+          <ul class="footer-links">
+            <li><a href="../../compare/index.html">机场横向对比工具</a></li>
+            <li><a href="../../ranking/overall/index.html">综合实力排行榜</a></li>
+            <li><a href="../../guides/windows/index.html">Windows 配置指南</a></li>
+            <li><a href="../../guides/android/index.html">Android 翻墙配置</a></li>
+            <li><a href="../../guides/ios/index.html">iOS 小火箭教程</a></li>
+            <li><a href="../../guides/macos/index.html">macOS 客户端教程</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>关于与政策</h5>
+          <ul class="footer-links">
+            <li><a href="../../about/index.html">关于本站</a></li>
+            <li><a href="../../editorial-policy/index.html">编辑政策与评测标准</a></li>
+            <li><a href="../../contact/index.html">联系我们与商务反馈</a></li>
+            <li><a href="../../privacy-policy/index.html">隐私权保护政策</a></li>
+            <li><a href="../../disclaimer/index.html">法律免责声明</a></li>
+            <li><a href="../../sitemap.xml">XML 网站地图</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 JichangGo.vip 版权所有 · 机场推荐与VPN节点选购指南 · 纯静态秒开架构</div>
+        <div>
+          <span>本站仅提供网络技术科普与客观信息整理，请遵守所在地法律法规。</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../../js/main.js"></script>
+  
+</body>
+</html>

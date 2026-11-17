@@ -1,0 +1,24 @@
+{
+  "name": "jichanggo.vip",
+  "version": "1.0.0",
+  "description": "2026中文机场博客 · Bing SEO 专业建站系统",
+  "main": "index.html",
+  "scripts": {
+    "build": "node scripts/generate.js",
+    "test": "node scripts/audit-seo.js && node scripts/check-links.js && node scripts/validate-content.js",
+    "audit": "node scripts/audit-seo.js && node scripts/check-links.js && node scripts/validate-content.js",
+    "indexnow": "node scripts/indexnow.js"
+  },
+  "keywords": [
+    "机场推荐",
+    "机场节点",
+    "性价比机场",
+    "梯子推荐",
+    "vpn",
+    "vpn机场",
+    "vpn节点",
+    "vpn推荐"
+  ],
+  "author": "JichangGo Team",
+  "license": "MIT"
+}

@@ -1,0 +1,38 @@
+Keyword,Intent,Target URL,Page Type,Priority,Title,H1
+机场推荐,Commercial,https://jichanggo.vip/,Homepage,P0,2026专业机场推荐与VPN节点选购指南 · 性价比梯子实测排行榜 | 机场Go,2026精选机场推荐与VPN节点选购指南：高性价比与稳定梯子深度评测
+机场节点,Informational,https://jichanggo.vip/airport/,Archive,P1,优质机场节点导航与品牌档案库 · 2026常用线路汇总 | 机场Go,优质机场节点导航与品牌规格数据库
+性价比机场,Commercial,https://jichanggo.vip/ranking/value/,Ranking,P0,2026高性价比机场推荐榜 · 每GB单价测算与平价梯子排行 | 机场Go,2026年度性价比机场推荐排行榜：每GB真实成本与套餐折算
+梯子推荐,Commercial,https://jichanggo.vip/recommend/beginner/,Cluster,P0,2026新手小白梯子推荐 · 一键客户端与零基础翻墙科学上网指南 | 机场Go,新手小白友好梯子推荐：支持一键客户端与全平台配置
+vpn,Informational,https://jichanggo.vip/blog/vpn-vs-airport/,Blog,P1,传统VPN与机场节点有何区别？出海与翻墙网络架构深度对比 | 机场Go,传统VPN与机场节点究竟有何区别？原理、速度与安全性对比
+vpn机场,Commercial,https://jichanggo.vip/recommend/,Cluster,P1,2026优质VPN机场推荐专题 · 专线与流媒体节点精选 | 机场Go,2026精选VPN机场与多协议节点推荐专题
+vpn节点,Informational,https://jichanggo.vip/glossary/shadowsocks-vless-hysteria2/,Glossary,P2,VPN节点与代理协议科普：SS、VLESS、Trojan与Hysteria2详解 | 机场Go,VPN节点常用协议解析：Shadowsocks、VLESS、Trojan 与 Hysteria 2
+vpn推荐,Commercial,https://jichanggo.vip/recommend/premium/,Cluster,P0,2026稳定专线VPN与高端IEPL机场推荐 · 晚高峰不卡顿 | 机场Go,高端稳定专线VPN与IEPL机场推荐：告别断连与晚高峰卡顿
+平价机场,Commercial,https://jichanggo.vip/recommend/budget/,Cluster,P1,低预算平价机场推荐 · 百元以内便宜梯子套餐横评 | 机场Go,百元内低预算平价机场推荐：高性价比便宜节点盘点
+综合排名,Commercial,https://jichanggo.vip/ranking/overall/,Ranking,P0,2026全网机场综合实力排行榜 · 速度、稳定性与售后多维测评 | 机场Go,2026全网机场综合实力排行榜：多维度客观核查清单
+稳定机场,Commercial,https://jichanggo.vip/ranking/stable/,Ranking,P1,敏感时期稳定机场排行榜 · 晚高峰抗封锁专线梯子汇总 | 机场Go,抗封锁稳定机场排行榜：晚高峰低延迟专线梯子实测
+低预算排行,Commercial,https://jichanggo.vip/ranking/budget/,Ranking,P2,百元预算平价机场排行榜 · 学生党高性价比节点推荐 | 机场Go,百元预算平价机场排行榜：低门槛月付与轻量梯子推荐
+AI梯子推荐,Commercial,https://jichanggo.vip/recommend/ai/,Cluster,P1,ChatGPT与Claude专用机场推荐 · 原生IP解锁不封号节点精选 | 机场Go,ChatGPT 与 Claude 专用 AI 机场推荐：原生家宽纯净 IP 精选
+流媒体节点,Commercial,https://jichanggo.vip/recommend/streaming/,Cluster,P1,Netflix与Disney+流媒体4K解锁机场推荐 · 奈飞看剧梯子指南 | 机场Go,Netflix / Disney+ / YouTube 4K 流媒体解锁机场推荐
+机场横向对比,Comparison,https://jichanggo.vip/compare/,Tool,P0,机场横向多维度在线对比工具 · 价格、流量与协议实时比对 | 机场Go,机场多维度横向在线对比工具：价格、节点与协议直观比对
+Windows客户端教程,Tutorial,https://jichanggo.vip/guides/windows/,Guide,P1,Windows电脑科学上网教程 · Clash Verge Rev与Sing-box配置指南 | 机场Go,Windows 电脑科学上网教程：Clash Verge Rev 与 Sing-box 客户端配置
+Android客户端教程,Tutorial,https://jichanggo.vip/guides/android/,Guide,P1,安卓手机翻墙教程 · Clash Meta for Android与v2rayNG图文指南 | 机场Go,Android 安卓手机科学上网指南：Clash 与 v2rayNG 节点导入教程
+iOS客户端教程,Tutorial,https://jichanggo.vip/guides/ios/,Guide,P1,iPhone苹果手机梯子配置教程 · Shadowrocket小火箭与Loon指南 | 机场Go,iOS 苹果手机科学上网教程：Shadowrocket 小火箭与 Loon 配置
+macOS客户端教程,Tutorial,https://jichanggo.vip/guides/macos/,Guide,P1,苹果Mac电脑科学上网配置 · Clash Verge Rev与Surge教程 | 机场Go,macOS 苹果电脑科学上网配置教程：Clash Verge 与 Surge 详细指南
+如何选择机场,Guide,https://jichanggo.vip/blog/how-to-choose-airport/,Blog,P1,新手如何选择适合自己的机场节点与梯子？避坑指南与核心考量维度 | 机场Go,新手如何选择适合自己的机场节点与梯子？5大避坑法则与核心选购维度
+专线原理解析,Informational,https://jichanggo.vip/blog/bgp-iplc-iepl-explained/,Blog,P2,BGP、IPLC、IEPL专线有何区别？为什么专线不易断连与敏感期稳定？ | 机场Go,BGP中转、IPLC与IEPL内网专线全方位解析：专线为什么更稳定？
+网络安全防范,Informational,https://jichanggo.vip/blog/airport-security-and-privacy/,Blog,P2,翻墙安全与隐私防范：机场日志记录、DNS泄露与防关联指南 | 机场Go,机场与梯子网络安全防范：如何杜绝DNS泄露与防范日志风险
+ChatGPT节点选购,Guide,https://jichanggo.vip/blog/ai-chatgpt-airport-nodes/,Blog,P1,访问ChatGPT提示Access Denied？解锁AI的机场节点选择技巧 | 机场Go,访问ChatGPT/Claude提示IP被封？解锁AI工具的机场节点选择秘籍
+IPLC专线科普,Informational,https://jichanggo.vip/glossary/iplc/,Glossary,P2,什么是IPLC专线？国际私有租用线路工作原理与优势详解 | 机场Go,什么是 IPLC 专线？国际私有租用线路工作原理解析
+分流规则科普,Informational,https://jichanggo.vip/glossary/rules-and-routing/,Glossary,P2,代理分流规则原理科普：全局模式、绕过大陆与PAC机制区别 | 机场Go,代理分流规则与路由模式解析：全局、绕过大陆与规则分流机制
+节点倍率科普,Informational,https://jichanggo.vip/glossary/node-multiplier/,Glossary,P2,什么是机场节点倍率？0.1倍率与3倍率流量实际消耗计算公式 | 机场Go,什么是机场节点倍率？为什么有些节点流量消耗特别快？
+DNS泄露科普,Informational,https://jichanggo.vip/glossary/dns-leak/,Glossary,P2,什么是DNS泄露？真实IP如何被暴露以及本地客户端防泄露配置 | 机场Go,什么是 DNS 泄露？原理机制与客户端本地防护配置指南
+TAG VPN档案,Profile,https://jichanggo.vip/airport/tag-vpn/,Airport,P1,TAG VPN 机场节点档案 · 全球100+地区与IEPL专线规格清单 | 机场Go,TAG VPN 品牌档案：全球广泛节点覆盖与高规格IEPL专线
+TAG VPN评测,Review,https://jichanggo.vip/review/tag-vpn/,Review,P1,TAG VPN 深度综合评测 · 价格、节点分布、流媒体与AI实测结论 | 机场Go,TAG VPN 深度综合评测：老牌高端专线机场表现如何？
+飞鸟云档案,Profile,https://jichanggo.vip/airport/flyingbird/,Airport,P1,FlyingBird 飞鸟云机场节点档案 · 隧道中转与流媒体解锁规格 | 机场Go,FlyingBird 飞鸟云品牌档案：高速中转隧道与流媒体专线支持
+飞鸟云评测,Review,https://jichanggo.vip/review/flyingbird/,Review,P1,FlyingBird 飞鸟云综合评测 · 套餐资费、多协议兼容与稳定性分析 | 机场Go,FlyingBird 飞鸟云综合评测：中高端高性价比梯子值得买吗？
+库洛米档案,Profile,https://jichanggo.vip/airport/kuromis/,Airport,P1,Kuromis 库洛米机场节点档案 · 原生IP、AI专线与超高带宽规格 | 机场Go,Kuromis 库洛米品牌档案：精品高端内网专线与AI深度优化
+库洛米评测,Review,https://jichanggo.vip/review/kuromis/,Review,P1,Kuromis 库洛米深度评测 · ChatGPT与全流媒体解锁实测与资费解析 | 机场Go,Kuromis 库洛米深度评测：高规格精品机场的优势与购买建议
+西部数据档案,Profile,https://jichanggo.vip/airport/westdata/,Airport,P1,WestData 西部数据机场档案 · 平价大流量与入门节点配置 | 机场Go,WestData 西部数据品牌档案：平价走量与轻量级备用梯子方案
+西部数据评测,Review,https://jichanggo.vip/review/westdata/,Review,P1,WestData 西部数据综合评测 · 每GB单价测算与低预算学生党分析 | 机场Go,WestData 西部数据综合评测：极低门槛平价机场实测解析
+闪电云档案,Profile,https://jichanggo.vip/airport/fastlink/,Airport,P1,FastLink 闪电云机场档案 · 定制一键客户端与新手友好配置 | 机场Go,FastLink 闪电云品牌档案：一键即连免配置与多线容灾节点
+闪电云评测,Review,https://jichanggo.vip/review/fastlink/,Review,P1,FastLink 闪电云综合评测 · 傻瓜式客户端体验与稳定性综合剖析 | 机场Go,FastLink 闪电云综合评测：新手零基础梯子的实际表现
