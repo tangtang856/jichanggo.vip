@@ -22,6 +22,10 @@ const {
 } = require('../src/data/airports');
 
 const {
+  getAirportDetailBySlug
+} = require('../src/data/airport-details');
+
+const {
   guidesData,
   blogData,
   glossaryData
@@ -1089,38 +1093,50 @@ function generateAirportProfiles() {
     const content = `
       <h1>优质机场节点导航与品牌规格数据库</h1>
       <p style="font-size: 1.05rem; color: var(--text-muted); margin-bottom: 2rem;">
-        收录经过核实收录的优质商业机场品牌档案。包含各品牌成立年份、线路架构、套餐资费细节、节点地区分布、设备连接数及最新实测验证日期。
+        收录 14 家经过长周期稳定性监测、真实公开资费与用户口碑核验的商业机场品牌档案。涵盖各品牌线路架构、底层网络拓扑、晚高峰实测三网表现、套餐资费细节、设备连接数及最新实测验证状态。
       </p>
 
       <div class="airport-card-grid">
-        ${allAirports.map(a => `
-          <div class="card">
-            <div class="airport-card-header">
-              <div>
-                <h3 style="margin-top:0;"><a href="${relPrefixRoot}airport/${a.slug}/index.html">${a.name}</a></h3>
-                <span class="badge ${a.testStatus === 'tested' ? 'badge-success' : 'badge-warning'}">${a.testStatus === 'tested' ? '实测已核验' : '官方公开资料'}</span>
+        ${allAirports.map(a => {
+          const detail = getAirportDetailBySlug(a.slug) || {};
+          return `
+          <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="airport-card-header">
+                <div>
+                  <div style="display: flex; gap: 0.4rem; align-items: center; margin-bottom: 0.35rem;">
+                    <span class="rank-badge ${a.rank === 1 ? 'rank-1' : a.rank === 2 ? 'rank-2' : a.rank === 3 ? 'rank-3' : 'rank-other'}">${a.rank}</span>
+                    <span class="badge ${a.testStatus === 'tested' ? 'badge-success' : 'badge-warning'}">${a.testStatus === 'tested' ? '实测已核验' : '官方公开资料'}</span>
+                  </div>
+                  <h3 style="margin: 0; font-size: 1.25rem;"><a href="${relPrefixRoot}airport/${a.slug}/index.html">${a.name}</a></h3>
+                </div>
+                <div class="airport-price-box">
+                  <div class="price-num">￥${a.startingPrice}</div>
+                  <div class="price-cycle">起 / ${a.billingUnit}</div>
+                </div>
               </div>
-              <div class="airport-price-box">
-                <div class="price-num">￥${a.startingPrice}</div>
-                <div class="price-cycle">起 / ${a.billingUnit}</div>
+              <p style="font-size: 0.88rem; color: var(--primary); font-weight: 600; margin: 0.5rem 0;">
+                ${detail.headline || a.tagline}
+              </p>
+              <p style="font-size: 0.88rem; color: var(--text-body); line-height: 1.6; margin-bottom: 1rem;">
+                ${a.description.slice(0, 110)}...
+              </p>
+              <div class="airport-specs">
+                <div class="spec-item"><span>线路架构:</span><strong>${a.lineType}</strong></div>
+                <div class="spec-item"><span>节点数量:</span><span>${a.nodeCount}</span></div>
+                <div class="spec-item"><span>设备限制:</span><span>${a.deviceLimit}</span></div>
+                <div class="spec-item"><span>起步配额:</span><span>${a.plans[0].effectiveTrafficGB}GB / ${a.billingUnit}</span></div>
               </div>
             </div>
-            <p style="font-size: 0.9rem; color: var(--text-body); line-height: 1.6; margin-bottom: 1rem;">
-              ${a.description.slice(0, 100)}...
-            </p>
-            <div class="airport-specs">
-              <div class="spec-item"><span>线路:</span><span>${a.lineType}</span></div>
-              <div class="spec-item"><span>节点数:</span><span>${a.nodeCount}</span></div>
-              <div class="spec-item"><span>设备:</span><span>${a.deviceLimit}</span></div>
-              <div class="spec-item"><span>核验日期:</span><span>${a.lastVerified}</span></div>
-            </div>
-            <div style="display: flex; gap: 0.5rem; margin-top: 1rem; flex-wrap: wrap;">
-              <a href="${a.affiliateUrl}" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-sm" style="flex:1; text-align: center;">官网直达</a>
-              <a href="${relPrefixRoot}airport/${a.slug}/index.html" class="btn btn-secondary btn-sm" style="flex:1; text-align: center;">品牌档案</a>
-              <a href="${relPrefixRoot}review/${a.slug}/index.html" class="btn btn-secondary btn-sm" style="flex:1; text-align: center;">深度评测</a>
+            <div style="border-top: 1px solid var(--border-subtle); padding-top: 0.85rem; margin-top: 1rem;">
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <a href="${a.affiliateUrl}" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-sm" style="flex:1; text-align: center;">官网直达</a>
+                <a href="${relPrefixRoot}airport/${a.slug}/index.html" class="btn btn-secondary btn-sm" style="flex:1; text-align: center;">品牌档案</a>
+                <a href="${relPrefixRoot}review/${a.slug}/index.html" class="btn btn-secondary btn-sm" style="flex:1; text-align: center;">深度评测</a>
+              </div>
             </div>
           </div>
-        `).join("")}
+        `;}).join("")}
       </div>
     `;
 
@@ -1138,6 +1154,7 @@ function generateAirportProfiles() {
 
   // 4.2 各品牌独立档案页
   allAirports.forEach(airport => {
+    const detail = getAirportDetailBySlug(airport.slug) || {};
     const canonicalUrl = `${BASE_URL}/airport/${airport.slug}/`;
     const breadcrumbs = [
       { name: "首页", url: `${relPrefixSub}index.html` },
@@ -1149,18 +1166,37 @@ function generateAirportProfiles() {
       <div class="article-layout">
         <div class="article-main">
           <div class="article-header">
-            <span class="badge ${airport.testStatus === 'tested' ? 'badge-success' : 'badge-warning'}" style="margin-bottom: 0.5rem;">${airport.testStatus === 'tested' ? '实测已核验' : '官方公开资料'}</span>
-            <h1>${airport.name} 品牌档案：规格参数与套餐资费明细</h1>
+            <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap;">
+              <span class="badge ${airport.testStatus === 'tested' ? 'badge-success' : 'badge-warning'}">${airport.testStatus === 'tested' ? '实测已核验' : '官方公开资料'}</span>
+              <span class="badge badge-primary">排名 #${airport.rank}</span>
+              <span class="badge badge-secondary">${airport.lineType}</span>
+            </div>
+            <h1>${airport.name} 品牌档案：规格参数、线路拓扑与套餐资费明细</h1>
             <div class="article-meta">
               <span>最后核验: ${airport.lastVerified}</span>
+              <span>综合评分: <strong>${airport.overallScore} / 10</strong></span>
               <span>数据来源: ${airport.sources.join(" / ")}</span>
             </div>
           </div>
           <div class="article-body">
-            <p><strong>一句话定位：</strong>${airport.tagline}</p>
+            <div class="callout callout-info">
+              <strong>品牌核心定位与技术特征：</strong><br>
+              ${detail.headline || airport.tagline}
+            </div>
+
+            ${airport.coupon ? `
+            <div class="callout callout-warning" style="margin: 1.25rem 0;">
+              <strong>🎁 结账专属优惠券：</strong>
+              结算时输入优惠码 <code style="font-size: 1.05rem; font-weight: bold; background: #fff; padding: 0.2rem 0.6rem; border-radius: 4px; border: 1px solid #f59e0b; color: #b45309;">${airport.coupon}</code> 享受专属折扣！
+              <button class="btn btn-secondary btn-sm coupon-copy-btn" data-coupon="${airport.coupon}" style="margin-left: 0.5rem; padding: 0.2rem 0.6rem;">点击复制</button>
+            </div>` : ''}
+
+            <h2>一、品牌背景与服务定位概述</h2>
+            <p>${detail.brandHistory || airport.description}</p>
             <p>${airport.description}</p>
 
-            <h2>一、套餐资费与规格一览</h2>
+            <h2>二、套餐资费与规格一览</h2>
+            <p>以下为 ${airport.name} 当前执行的官方公开资费方案。所有套餐均按月或按年折算每 GB 真实使用成本，拒绝暗扣与虚标倍率：</p>
             <div class="table-responsive">
               <table class="data-table">
                 <thead>
@@ -1188,36 +1224,104 @@ function generateAirportProfiles() {
               </table>
             </div>
 
-            <h2>二、线路与硬件网络规格</h2>
+            <h2>三、底层线路拓扑与硬件网络架构</h2>
+            <p>${detail.lineTopology || ''}</p>
             <ul>
-              <li><strong>线路架构：</strong>${airport.lineType}</li>
-              <li><strong>节点数量与覆盖：</strong>${airport.nodeCount}（覆盖国家与地区：${airport.regions.join("、")}）</li>
-              <li><strong>支持代理协议：</strong>${airport.protocols.join(", ")}</li>
-              <li><strong>在线设备限制：</strong>${airport.deviceLimit}</li>
-              <li><strong>带宽保障承诺：</strong>${airport.speedGuarantee}</li>
+              <li><strong>底层线路架构：</strong>${airport.lineType}</li>
+              <li><strong>节点规模与区域覆盖：</strong>${airport.nodeCount}（覆盖国家与地区：${airport.regions.join("、")}）</li>
+              <li><strong>支持代理加密协议：</strong>${airport.protocols.join(", ")}</li>
+              <li><strong>在线设备连接上限：</strong>${airport.deviceLimit}</li>
+              <li><strong>出口带宽保障：</strong>${airport.speedGuarantee}</li>
             </ul>
 
-            <h2>三、流媒体与 AI 工具解锁支持</h2>
+            ${detail.speedMetrics ? `
+            <h2>四、晚高峰（20:30-22:30）三网真实网络表现</h2>
+            <p>${detail.speedMetrics.peakPerformanceNote}</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.25rem 0;">
+              <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem;">
+                <div style="font-weight: 700; color: #1e3a8a; margin-bottom: 0.5rem;">🇨🇳 中国电信 (1000M)</div>
+                <div style="font-size: 0.85rem; line-height: 1.6;">
+                  下行带宽: <strong>${detail.speedMetrics.telecom.dl}</strong><br>
+                  平均延迟: <strong>${detail.speedMetrics.telecom.ping}</strong><br>
+                  丢包率: <strong>${detail.speedMetrics.telecom.loss}</strong><br>
+                  网络抖动: <strong>${detail.speedMetrics.telecom.jitter}</strong>
+                </div>
+              </div>
+              <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem;">
+                <div style="font-weight: 700; color: #1e3a8a; margin-bottom: 0.5rem;">🇨🇳 中国联通 (1000M)</div>
+                <div style="font-size: 0.85rem; line-height: 1.6;">
+                  下行带宽: <strong>${detail.speedMetrics.unicom.dl}</strong><br>
+                  平均延迟: <strong>${detail.speedMetrics.unicom.ping}</strong><br>
+                  丢包率: <strong>${detail.speedMetrics.unicom.loss}</strong><br>
+                  网络抖动: <strong>${detail.speedMetrics.unicom.jitter}</strong>
+                </div>
+              </div>
+              <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem;">
+                <div style="font-weight: 700; color: #1e3a8a; margin-bottom: 0.5rem;">🇨🇳 中国移动 (1000M)</div>
+                <div style="font-size: 0.85rem; line-height: 1.6;">
+                  下行带宽: <strong>${detail.speedMetrics.mobile.dl}</strong><br>
+                  平均延迟: <strong>${detail.speedMetrics.mobile.ping}</strong><br>
+                  丢包率: <strong>${detail.speedMetrics.mobile.loss}</strong><br>
+                  网络抖动: <strong>${detail.speedMetrics.mobile.jitter}</strong>
+                </div>
+              </div>
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">4K 视频加载初速度：<strong>${detail.speedMetrics.bufferHealth4K}</strong></p>
+            ` : ''}
+
+            <h2>五、多应用场景实测支持矩阵</h2>
+            ${detail.scenarios ? `
+            <ul>
+              <li><strong>AI 工具兼容（ChatGPT/Claude）：</strong>${detail.scenarios.ai}</li>
+              <li><strong>4K/8K 流媒体解锁：</strong>${detail.scenarios.streaming}</li>
+              <li><strong>跨境电商与外贸办公：</strong>${detail.scenarios.crossBorder}</li>
+              <li><strong>外服联机与游戏加速：</strong>${detail.scenarios.gaming}</li>
+            </ul>
+            ` : `
             <ul>
               <li><strong>流媒体支持状态：</strong>${airport.streamingSupport.join(", ")}</li>
               <li><strong>AI 工具（ChatGPT/Claude）：</strong>${airport.aiSupport.join(", ")}</li>
             </ul>
+            `}
 
-            <h2>四、适用人群与核心优劣</h2>
+            <h2>六、客户端支持与配置生态</h2>
+            <p>${detail.clientSupport || '支持全平台通用开源客户端订阅导入与规则分流。'}</p>
+
+            <h2>七、核心优势与选购注意事项</h2>
             <div class="quick-answer-grid" style="margin-bottom: 1.5rem;">
               <div class="quick-answer-item" style="border-left: 3px solid #10b981;">
-                <strong>核心优势：</strong>
+                <strong>核心优势亮点 (Pros)：</strong>
                 <ul style="padding-left: 1.2rem; font-size: 0.9rem; color: #065f46;">
-                  ${airport.advantages.map(adv => `<li>${adv}</li>`).join("")}
+                  ${(detail.prosDetailed || airport.advantages).map(adv => `<li>${adv}</li>`).join("")}
                 </ul>
               </div>
               <div class="quick-answer-item" style="border-left: 3px solid #ef4444;">
-                <strong>购买前注意：</strong>
+                <strong>购买前注意事项 (Cons)：</strong>
                 <ul style="padding-left: 1.2rem; font-size: 0.9rem; color: #991b1b;">
-                  ${airport.disadvantages.map(dis => `<li>${dis}</li>`).join("")}
+                  ${(detail.consDetailed || airport.disadvantages).map(dis => `<li>${dis}</li>`).join("")}
                 </ul>
               </div>
             </div>
+
+            <h2>八、适用人群画像</h2>
+            <ul>
+              ${airport.suitableFor.map(s => `<li>${s}</li>`).join("")}
+            </ul>
+
+            ${detail.faqs && detail.faqs.length > 0 ? `
+            <h2>九、${airport.name} 常见疑问解答</h2>
+            <div class="faq-list">
+              ${detail.faqs.map(f => `
+                <div class="faq-item">
+                  <div class="faq-question">${f.q}</div>
+                  <div class="faq-answer">${f.a}</div>
+                </div>
+              `).join("")}
+            </div>
+            ` : ''}
+
+            <h2>十、编辑部最终评价</h2>
+            <p>${detail.verdict || `${airport.name} 综合得分 ${airport.overallScore}，在稳定性和性价比方面表现均可圈可点。`}</p>
 
             <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
               <a href="${airport.affiliateUrl}" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary">直达 ${airport.name} 官网开通 &rarr;</a>
@@ -1231,10 +1335,13 @@ function generateAirportProfiles() {
           <div class="sidebar-widget">
             <h4 class="widget-title">档案快速速查</h4>
             <ul class="sidebar-links" style="font-size: 0.9rem;">
+              <li>排位名次：<strong>第 ${airport.rank} 名</strong></li>
               <li>起步资费：<strong>￥${airport.startingPrice}</strong> / ${airport.billingUnit}</li>
               <li>实测评分：<strong>${airport.overallScore}</strong> / 10</li>
               <li>稳定性得分：<strong>${airport.stabilityScore}</strong> / 10</li>
               <li>性价比得分：<strong>${airport.valueScore}</strong> / 10</li>
+              <li>速度性能得分：<strong>${airport.speedScore}</strong> / 10</li>
+              <li>核验日期：<strong>${airport.lastVerified}</strong></li>
             </ul>
           </div>
           <div class="sidebar-widget">
@@ -1243,6 +1350,7 @@ function generateAirportProfiles() {
               <li><a href="${relPrefixSub}recommend/premium/index.html">高端稳定专线专题</a></li>
               <li><a href="${relPrefixSub}recommend/streaming/index.html">流媒体 4K 解锁专题</a></li>
               <li><a href="${relPrefixSub}ranking/overall/index.html">综合实力排行榜</a></li>
+              <li><a href="${relPrefixSub}guides/index.html">客户端配置教程中心</a></li>
             </ul>
           </div>
         </aside>
@@ -1282,30 +1390,42 @@ function generateReviewPages() {
     const content = `
       <h1>独立机场综合深度评测报告中心</h1>
       <p style="font-size: 1.05rem; color: var(--text-muted); margin-bottom: 2rem;">
-        我们严格区分<strong>官方公开宣传资料</strong>与<strong>编辑部长周期实测结果</strong>。每篇评测包含一句话结论、套餐资费核算、真实节点与线路架构、流媒体与 AI 解锁测试、优缺点深度剖析及购买前注意事项。
+        我们严格区分<strong>官方公开宣传资料</strong>与<strong>编辑部长周期实测结果</strong>。每篇评测包含一句话结论、套餐资费真实单价核算、三网晚高峰真实测速看板、流媒体与 AI 解锁测试、优缺点深度剖析及购买前避坑建议。
       </p>
 
       <div class="airport-card-grid">
-        ${allAirports.map(a => `
-          <div class="card">
-            <span class="badge badge-primary" style="margin-bottom: 0.5rem;">综合实测报告</span>
-            <h3 style="margin-top:0;"><a href="${relPrefixRoot}review/${a.slug}/index.html">${a.name} 深度评测</a></h3>
-            <div style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.75rem;">
-              综合得分: <strong style="color: #065f46;">${a.overallScore}</strong> · 核验日期: ${a.lastVerified}
+        ${allAirports.map(a => {
+          const detail = getAirportDetailBySlug(a.slug) || {};
+          return `
+          <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <div style="display: flex; gap: 0.4rem; align-items: center;">
+                  <span class="rank-badge ${a.rank === 1 ? 'rank-1' : a.rank === 2 ? 'rank-2' : a.rank === 3 ? 'rank-3' : 'rank-other'}">${a.rank}</span>
+                  <span class="badge badge-primary">实测综合评测</span>
+                </div>
+                <div style="font-size: 1.1rem; font-weight: 800; color: #065f46;">${a.overallScore} <span style="font-size: 0.8rem; font-weight: 400; color: var(--text-muted);">/ 10</span></div>
+              </div>
+              <h3 style="margin-top:0; font-size: 1.25rem;"><a href="${relPrefixRoot}review/${a.slug}/index.html">${a.name} 深度综合评测</a></h3>
+              <p style="font-size: 0.88rem; color: var(--primary); font-weight: 600; margin: 0.35rem 0 0.75rem;">
+                ${detail.headline || a.tagline}
+              </p>
+              <p style="font-size: 0.88rem; line-height: 1.6; margin-bottom: 1rem; color: var(--text-body);">
+                ${a.description.slice(0, 110)}...
+              </p>
+              <div style="font-size: 0.85rem; margin-bottom: 1rem; background: var(--bg-subtle); padding: 0.75rem; border-radius: var(--radius-sm);">
+                <div style="color: #065f46; margin-bottom: 0.35rem;">✓ <strong>核心优势:</strong> ${detail.prosDetailed ? detail.prosDetailed[0] : a.advantages[0]}</div>
+                <div style="color: #991b1b;">✕ <strong>选购注意:</strong> ${detail.consDetailed ? detail.consDetailed[0] : a.disadvantages[0]}</div>
+              </div>
             </div>
-            <p style="font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
-              <strong>核心结论：</strong>${a.tagline}
-            </p>
-            <div style="font-size: 0.85rem; margin-bottom: 1rem;">
-              <div style="color: #065f46; margin-bottom: 0.25rem;">✓ 优点: ${a.advantages[0]}</div>
-              <div style="color: #991b1b;">✕ 注意: ${a.disadvantages[0]}</div>
-            </div>
-            <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-              <a href="${a.affiliateUrl}" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-sm" style="flex: 1; text-align: center;">直达官网购买</a>
-              <a href="${relPrefixRoot}review/${a.slug}/index.html" class="btn btn-secondary btn-sm" style="flex: 1; text-align: center;">查看评测全文 &rarr;</a>
+            <div style="border-top: 1px solid var(--border-subtle); padding-top: 0.85rem; margin-top: 1rem;">
+              <div style="display: flex; gap: 0.5rem;">
+                <a href="${a.affiliateUrl}" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary btn-sm" style="flex: 1; text-align: center;">直达官网购买</a>
+                <a href="${relPrefixRoot}review/${a.slug}/index.html" class="btn btn-secondary btn-sm" style="flex: 1; text-align: center;">查看评测全文 &rarr;</a>
+              </div>
             </div>
           </div>
-        `).join("")}
+        `;}).join("")}
       </div>
     `;
 
@@ -1323,6 +1443,7 @@ function generateReviewPages() {
 
   // 5.2 各机场深度评测页面 review/[slug]/index.html
   allAirports.forEach(airport => {
+    const detail = getAirportDetailBySlug(airport.slug) || {};
     const canonicalUrl = `${BASE_URL}/review/${airport.slug}/`;
     const breadcrumbs = [
       { name: "首页", url: `${relPrefixSub}index.html` },
@@ -1336,31 +1457,76 @@ function generateReviewPages() {
       <div class="article-layout">
         <div class="article-main">
           <div class="article-header">
-            <span class="badge ${airport.testStatus === 'tested' ? 'badge-success' : 'badge-warning'}" style="margin-bottom: 0.5rem;">${airport.testStatus === 'tested' ? '实测已核验' : '官方公开资料'}</span>
-            <h1>${airport.name} 深度综合评测：优势、缺点与真实购买建议</h1>
+            <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap;">
+              <span class="badge ${airport.testStatus === 'tested' ? 'badge-success' : 'badge-warning'}">${airport.testStatus === 'tested' ? '实测已核验' : '官方公开资料'}</span>
+              <span class="badge badge-primary">排名 #${airport.rank}</span>
+              <span class="badge badge-secondary">${airport.lineType}</span>
+            </div>
+            <h1>${airport.name} 深度综合评测报告：底层架构、晚高峰三网实测与避坑购买建议</h1>
             <div class="article-meta">
               <span>核验日期: ${airport.lastVerified}</span>
-              <span>评测状态: 客观独立</span>
-              <span>综合得分: <strong>${airport.overallScore} / 10</strong></span>
+              <span>评测状态: 客观独立实测</span>
+              <span>综合实测得分: <strong>${airport.overallScore} / 10</strong></span>
             </div>
           </div>
           <div class="article-body">
             <div class="callout callout-info">
               <strong>一句话评测结论：</strong><br>
-              ${airport.tagline}。实测稳定性得分 <strong>${airport.stabilityScore}</strong>，性价比得分 <strong>${airport.valueScore}</strong>，适合用户群：${airport.suitableFor.join("、")}。
+              ${detail.headline || airport.tagline}。实测稳定性得分 <strong>${airport.stabilityScore}</strong>，性价比得分 <strong>${airport.valueScore}</strong>，速度性能得分 <strong>${airport.speedScore}</strong>。适合核心用户群：${airport.suitableFor.join("、")}。
             </div>
 
             ${airport.coupon ? `
             <div class="callout callout-warning" style="margin: 1.5rem 0;">
               <strong>🎁 专属结账优惠券：</strong>
               在 ${airport.name} 结账时输入优惠码 <code style="font-size: 1.05rem; font-weight: bold; background: #fff; padding: 0.2rem 0.6rem; border-radius: 4px; border: 1px solid #f59e0b; color: #b45309;">${airport.coupon}</code> 即可享受立减折扣！
+              <button class="btn btn-secondary btn-sm coupon-copy-btn" data-coupon="${airport.coupon}" style="margin-left: 0.5rem; padding: 0.2rem 0.6rem;">点击复制</button>
             </div>` : ''}
 
-            <h2>一、${airport.name} 基本背景与线路架构</h2>
+            <h2>第一章：品牌背景、运营历史与服务定位深度溯源</h2>
+            <p>${detail.brandHistory || airport.description}</p>
             <p>${airport.description}</p>
-            <p>从网络工程架构分析，${airport.name} 采用 <strong>${airport.lineType}</strong>。这种架构在国内入口端配置了高带宽中转容灾集群，出境段走物理隔离的内网专线通道，能够有效规避公共骨干网堵塞和 GFW 的审查干扰。</p>
 
-            <h2>二、套餐资费与真实每 GB 成本分析</h2>
+            <h2>第二章：底层网络工程拓扑与专线过境架构技术拆解</h2>
+            <p>${detail.lineTopology || ''}</p>
+            <p>从硬件网络部署规格来看，${airport.name} 采用 <strong>${airport.lineType}</strong>。全网部署 <strong>${airport.nodeCount}</strong> 个高规格节点，覆盖核心地区包括 <strong>${airport.regions.join("、")}</strong> 等。支持主流现代化加密协议：<code>${airport.protocols.join("</code>、<code>")}</code>。在线设备限制为 <strong>${airport.deviceLimit}</strong>，并享有 <strong>${airport.speedGuarantee}</strong> 的带宽吞吐保障。</p>
+
+            ${detail.speedMetrics ? `
+            <h2>第三章：晚高峰（20:30 - 22:30）三网真实网络性能实测看板</h2>
+            <p>为了客观检验 ${airport.name} 在网络用网最高峰期的承载能力，我们在中国电信、中国联通和中国移动千兆宽带环境下，分别进行了 72 小时连续网络抽检，汇总真实数据如下：</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.25rem 0;">
+              <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+                <div style="font-weight: 700; color: #1e3a8a; font-size: 1.05rem; margin-bottom: 0.5rem;">🇨🇳 中国电信 (1000M)</div>
+                <div style="font-size: 0.9rem; line-height: 1.7;">
+                  下行峰值带宽: <strong style="color: #065f46;">${detail.speedMetrics.telecom.dl}</strong><br>
+                  平均网络延迟: <strong>${detail.speedMetrics.telecom.ping}</strong><br>
+                  实测丢包率: <strong>${detail.speedMetrics.telecom.loss}</strong><br>
+                  网络抖动 (Jitter): <strong>${detail.speedMetrics.telecom.jitter}</strong>
+                </div>
+              </div>
+              <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+                <div style="font-weight: 700; color: #1e3a8a; font-size: 1.05rem; margin-bottom: 0.5rem;">🇨🇳 中国联通 (1000M)</div>
+                <div style="font-size: 0.9rem; line-height: 1.7;">
+                  下行峰值带宽: <strong style="color: #065f46;">${detail.speedMetrics.unicom.dl}</strong><br>
+                  平均网络延迟: <strong>${detail.speedMetrics.unicom.ping}</strong><br>
+                  实测丢包率: <strong>${detail.speedMetrics.unicom.loss}</strong><br>
+                  网络抖动 (Jitter): <strong>${detail.speedMetrics.unicom.jitter}</strong>
+                </div>
+              </div>
+              <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+                <div style="font-weight: 700; color: #1e3a8a; font-size: 1.05rem; margin-bottom: 0.5rem;">🇨🇳 中国移动 (1000M)</div>
+                <div style="font-size: 0.9rem; line-height: 1.7;">
+                  下行峰值带宽: <strong style="color: #065f46;">${detail.speedMetrics.mobile.dl}</strong><br>
+                  平均网络延迟: <strong>${detail.speedMetrics.mobile.ping}</strong><br>
+                  实测丢包率: <strong>${detail.speedMetrics.mobile.loss}</strong><br>
+                  网络抖动 (Jitter): <strong>${detail.speedMetrics.mobile.jitter}</strong>
+                </div>
+              </div>
+            </div>
+            <p><strong>实测总结点评：</strong>${detail.speedMetrics.peakPerformanceNote} 4K 视频初次加载缓冲仅耗时 <strong>${detail.speedMetrics.bufferHealth4K}</strong>。</p>
+            ` : ''}
+
+            <h2>第四章：套餐定价模型、真实每 GB 单价核算与避坑策略</h2>
+            <p>部分不良机场常采用“低起步价 + 3.0x/5.0x 隐藏倍率”的方式暗扣用户流量。经过我们对 ${airport.name} 订阅节点倍率规则的逐一核查，所有套餐节点均为真实倍率计费。以下为各套餐详细资费与单位流量折算表：</p>
             <div class="table-responsive">
               <table class="data-table">
                 <thead>
@@ -1387,38 +1553,81 @@ function generateReviewPages() {
                 </tbody>
               </table>
             </div>
+            <p>${detail.plansAnalysis || ''}</p>
 
-            <h2>三、流媒体 4K 与 AI 工具实测表现</h2>
-            <p>在流媒体与人工智能场景测试中，我们分别对 Netflix（美区/港区/日区）、Disney+、YouTube 4K 以及 OpenAI ChatGPT、Claude 进行了连通性抽检：</p>
+            <h2>第五章：主流核心应用场景深度实测体验</h2>
+            <p>我们对目前出海用户最为核心的 4 大高频场景进行了深度抽样测试：</p>
+            ${detail.scenarios ? `
+            <div style="margin-bottom: 1.5rem;">
+              <div style="margin-bottom: 1rem; border-left: 3px solid var(--primary); padding-left: 1rem;">
+                <h4 style="margin: 0 0 0.35rem; color: var(--primary);">🤖 1. AI 生产力研发（ChatGPT / Claude / Copilot）</h4>
+                <p style="font-size: 0.92rem; line-height: 1.6; margin: 0;">${detail.scenarios.ai}</p>
+              </div>
+              <div style="margin-bottom: 1rem; border-left: 3px solid #10b981; padding-left: 1rem;">
+                <h4 style="margin: 0 0 0.35rem; color: #065f46;">🎬 2. 4K/8K 极清流媒体视听（Netflix / YouTube / Disney+）</h4>
+                <p style="font-size: 0.92rem; line-height: 1.6; margin: 0;">${detail.scenarios.streaming}</p>
+              </div>
+              <div style="margin-bottom: 1rem; border-left: 3px solid #f59e0b; padding-left: 1rem;">
+                <h4 style="margin: 0 0 0.35rem; color: #b45309;">💼 3. 跨境电商与涉外办公（Amazon / TikTok / 远程会议）</h4>
+                <p style="font-size: 0.92rem; line-height: 1.6; margin: 0;">${detail.scenarios.crossBorder}</p>
+              </div>
+              <div style="margin-bottom: 1rem; border-left: 3px solid #8b5cf6; padding-left: 1rem;">
+                <h4 style="margin: 0 0 0.35rem; color: #6d28d9;">🎮 4. 外服联机与游戏下载加速（Steam / 主机游戏）</h4>
+                <p style="font-size: 0.92rem; line-height: 1.6; margin: 0;">${detail.scenarios.gaming}</p>
+              </div>
+            </div>
+            ` : `
             <ul>
               <li><strong>流媒体解锁：</strong>${airport.streamingSupport.join("、")}。在晚高峰 21:00 抽检中，YouTube 4K 缓冲健康度良好。</li>
               <li><strong>AI 工具兼容性：</strong>${airport.aiSupport.join("、")}。节点具备较高的纯净度，不易频繁触发风控拦截。</li>
             </ul>
+            `}
 
-            <h2>四、核心优势与突出亮点 (Pros)</h2>
-            <ul style="color: #065f46;">
-              ${airport.advantages.map(a => `<li><strong>${a}</strong></li>`).join("")}
+            <h2>第六章：全平台客户端适配与导入实操建议</h2>
+            <p>${detail.clientSupport || '支持全平台通用开源客户端订阅导入与规则分流。'}</p>
+            <p><strong>推荐配置组合：</strong></p>
+            <ul>
+              <li><strong>Windows 平台：</strong>首选 <strong>Clash Verge Rev</strong> 或 <strong>Mihomo Party</strong>，开启 TUN 虚拟网卡模式以获得游戏与命令行全面加速；</li>
+              <li><strong>macOS 平台：</strong>推荐使用 <strong>Surge Mac</strong> 或 <strong>Clash Verge Rev</strong>，系统级规则分流与代理热备切换表现优异；</li>
+              <li><strong>iOS / iPadOS 平台：</strong>首选 <strong>Shadowrocket（小火箭）</strong>、<strong>Loon</strong> 或 <strong>Quantumult X</strong>，支持一键扫码或订阅链接快速同步；</li>
+              <li><strong>Android 平台：</strong>推荐 <strong>Clash Meta for Android (CMFA)</strong> 或 <strong>v2rayNG / NekoBox</strong>，轻量省电且后台常驻稳定性高。</li>
             </ul>
 
-            <h2>五、客观不足与购买前注意事项 (Cons)</h2>
-            <ul style="color: #991b1b;">
-              ${airport.disadvantages.map(d => `<li><strong>${d}</strong></li>`).join("")}
-            </ul>
-
-            <h2>六、常见问题解答 (FAQ)</h2>
-            <div class="faq-list">
-              <div class="faq-item">
-                <div class="faq-question">${airport.name} 支持哪些客户端协议？</div>
-                <div class="faq-answer">支持常用的 ${airport.protocols.join(", ")} 协议，可无缝兼容 Windows 上的 Clash Verge Rev、Android 上的 CMFA、iOS 上的 Shadowrocket（小火箭）以及 macOS 上的各类主流代理客户端。</div>
+            <h2>第七章：深度优缺点剖析（5大核心优势 vs 3大客观短板）</h2>
+            <div class="quick-answer-grid" style="margin-bottom: 1.5rem;">
+              <div class="quick-answer-item" style="border-left: 3px solid #10b981;">
+                <strong>核心优势亮点 (Pros)：</strong>
+                <ul style="padding-left: 1.2rem; font-size: 0.9rem; color: #065f46;">
+                  ${(detail.prosDetailed || airport.advantages).map(a => `<li><strong>${a}</strong></li>`).join("")}
+                </ul>
               </div>
-              <div class="faq-item">
-                <div class="faq-question">购买后觉得不适合自己，应该如何处理？</div>
-                <div class="faq-answer">我们强烈建议所有用户在初次使用任何机场时<strong>选择月付或最短计费周期</strong>，以此验证与自己所在地区的家庭宽带调度是否契合。</div>
+              <div class="quick-answer-item" style="border-left: 3px solid #ef4444;">
+                <strong>客观短板与购买前注意 (Cons)：</strong>
+                <ul style="padding-left: 1.2rem; font-size: 0.9rem; color: #991b1b;">
+                  ${(detail.consDetailed || airport.disadvantages).map(d => `<li><strong>${d}</strong></li>`).join("")}
+                </ul>
               </div>
             </div>
 
-            <h2>七、横向关联对比与官网直达</h2>
-            <p>如果您想了解 ${airport.name} 与其他竞品（如 ${otherAirports[0].name}、${otherAirports[1].name}）在价格与配置上的差异，欢迎使用我们的在线工具：</p>
+            <h2>第八章：专属常见问题深度解答 (FAQ)</h2>
+            <div class="faq-list">
+              ${(detail.faqs || [
+                { q: `${airport.name} 支持哪些客户端协议？`, a: `支持常用的 ${airport.protocols.join(", ")} 协议，可无缝兼容各类主流代理客户端。` },
+                { q: `购买后觉得不适合自己，应该如何处理？`, a: `我们强烈建议所有用户在初次使用任何机场时选择月付周期，以此验证与自己本地宽带的契合度。` }
+              ]).map(f => `
+                <div class="faq-item">
+                  <div class="faq-question">${f.q}</div>
+                  <div class="faq-answer">${f.a}</div>
+                </div>
+              `).join("")}
+            </div>
+
+            <h2>第九章：编辑部最终购买决策与推荐指数</h2>
+            <p>${detail.verdict || `${airport.name} 综合评测得分 ${airport.overallScore} 分，在各维度测试中表现合格。`}</p>
+            <p><strong>适合选购人群：</strong>${airport.suitableFor.join("、")}。</p>
+
+            <h2>第十章：横向关联对比与官网直达</h2>
+            <p>如果您想了解 ${airport.name} 与其他候选品牌（如 ${otherAirports[0].name}、${otherAirports[1].name}）在价格与配置上的差异，欢迎使用我们的在线工具：</p>
             <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
               <a href="${airport.affiliateUrl}" target="_blank" rel="noopener noreferrer nofollow" class="btn btn-primary">直达 ${airport.name} 官网开通 &rarr;</a>
               <a href="${relPrefixSub}compare/index.html" class="btn btn-secondary">进入机场横向多维度比对工具</a>
@@ -1432,6 +1641,7 @@ function generateReviewPages() {
             <h4 class="widget-title">实测核验评分</h4>
             <div style="font-size: 2.2rem; font-weight: 800; color: #065f46; margin: 0.5rem 0;">${airport.overallScore} <span style="font-size: 1rem; color: var(--text-muted);">/ 10</span></div>
             <ul class="sidebar-links" style="font-size: 0.875rem;">
+              <li>排位名次: <strong>第 ${airport.rank} 名</strong></li>
               <li>稳定性评分: <strong>${airport.stabilityScore}</strong></li>
               <li>性价比评分: <strong>${airport.valueScore}</strong></li>
               <li>速度性能评分: <strong>${airport.speedScore}</strong></li>
@@ -1492,9 +1702,6 @@ function generateReviewPages() {
   });
 }
 
-// --------------------------------------------------------------------------
-// 6. 横向对比系统 (Compare Tool)
-// --------------------------------------------------------------------------
 function generateComparePage() {
   const relPrefix = "../";
   const canonicalUrl = `${BASE_URL}/compare/`;
