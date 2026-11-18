@@ -169,9 +169,9 @@ function generateHomepage() {
               <a href="${relPrefix}airport/${allAirports[0].slug}/index.html" class="btn btn-secondary">品牌参数档案</a>
             </div>
           </div>
-          <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.5rem; text-align: center; box-shadow: var(--shadow-sm);">
+          <div style="background: rgba(17, 26, 46, 0.75); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: var(--radius-md); padding: 1.5rem; text-align: center; box-shadow: var(--shadow-sm); backdrop-filter: blur(12px);">
             <div style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">实测综合评分</div>
-            <div style="font-size: 2.75rem; font-weight: 800; color: #065f46; line-height: 1.1; margin: 0.25rem 0;">${allAirports[0].overallScore}</div>
+            <div style="font-size: 2.75rem; font-weight: 800; color: #38bdf8; line-height: 1.1; margin: 0.25rem 0; text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);">${allAirports[0].overallScore}</div>
             <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1rem;">满分 10.0 / 晚高峰零拥堵</div>
             <div style="border-top: 1px solid var(--border-subtle); padding-top: 0.75rem; margin-top: 0.5rem;">
               <div style="font-size: 1.75rem; font-weight: 800; color: var(--primary); line-height: 1;">￥${allAirports[0].startingPrice}</div>
@@ -1236,7 +1236,7 @@ function generateAirportProfiles() {
             ${airport.coupon ? `
             <div class="callout callout-warning" style="margin: 1.25rem 0;">
               <strong>🎁 结账专属优惠券：</strong>
-              结算时输入优惠码 <code style="font-size: 1.05rem; font-weight: bold; background: #fff; padding: 0.2rem 0.6rem; border-radius: 4px; border: 1px solid #f59e0b; color: #b45309;">${airport.coupon}</code> 享受专属折扣！
+              结算时输入优惠码 <code style="font-size: 1.05rem; font-weight: bold; background: rgba(245, 158, 11, 0.2); padding: 0.2rem 0.6rem; border-radius: 4px; border: 1px solid #f59e0b; color: #fbbf24;">${airport.coupon}</code> 享受专属折扣！
               <button class="btn btn-secondary btn-sm coupon-copy-btn" data-coupon="${airport.coupon}" style="margin-left: 0.5rem; padding: 0.2rem 0.6rem;">点击复制</button>
             </div>` : ''}
 
@@ -1287,8 +1287,8 @@ function generateAirportProfiles() {
             <h2>四、晚高峰（20:30-22:30）三网真实网络表现</h2>
             <p>${detail.speedMetrics.peakPerformanceNote}</p>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.25rem 0;">
-              <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem;">
-                <div style="font-weight: 700; color: #1e3a8a; margin-bottom: 0.5rem;">🇨🇳 中国电信 (1000M)</div>
+              <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem;">
+                <div style="font-weight: 700; color: #38bdf8; margin-bottom: 0.5rem;">🇨🇳 中国电信 (1000M)</div>
                 <div style="font-size: 0.85rem; line-height: 1.6;">
                   下行带宽: <strong>${detail.speedMetrics.telecom.dl}</strong><br>
                   平均延迟: <strong>${detail.speedMetrics.telecom.ping}</strong><br>
@@ -1296,8 +1296,8 @@ function generateAirportProfiles() {
                   网络抖动: <strong>${detail.speedMetrics.telecom.jitter}</strong>
                 </div>
               </div>
-              <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem;">
-                <div style="font-weight: 700; color: #1e3a8a; margin-bottom: 0.5rem;">🇨🇳 中国联通 (1000M)</div>
+              <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem;">
+                <div style="font-weight: 700; color: #38bdf8; margin-bottom: 0.5rem;">🇨🇳 中国联通 (1000M)</div>
                 <div style="font-size: 0.85rem; line-height: 1.6;">
                   下行带宽: <strong>${detail.speedMetrics.unicom.dl}</strong><br>
                   平均延迟: <strong>${detail.speedMetrics.unicom.ping}</strong><br>
@@ -1305,8 +1305,8 @@ function generateAirportProfiles() {
                   网络抖动: <strong>${detail.speedMetrics.unicom.jitter}</strong>
                 </div>
               </div>
-              <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem;">
-                <div style="font-weight: 700; color: #1e3a8a; margin-bottom: 0.5rem;">🇨🇳 中国移动 (1000M)</div>
+              <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem;">
+                <div style="font-weight: 700; color: #38bdf8; margin-bottom: 0.5rem;">🇨🇳 中国移动 (1000M)</div>
                 <div style="font-size: 0.85rem; line-height: 1.6;">
                   下行带宽: <strong>${detail.speedMetrics.mobile.dl}</strong><br>
                   平均延迟: <strong>${detail.speedMetrics.mobile.ping}</strong><br>
@@ -1533,7 +1533,7 @@ function generateReviewPages() {
             ${airport.coupon ? `
             <div class="callout callout-warning" style="margin: 1.5rem 0;">
               <strong>🎁 专属结账优惠券：</strong>
-              在 ${airport.name} 结账时输入优惠码 <code style="font-size: 1.05rem; font-weight: bold; background: #fff; padding: 0.2rem 0.6rem; border-radius: 4px; border: 1px solid #f59e0b; color: #b45309;">${airport.coupon}</code> 即可享受立减折扣！
+              在 ${airport.name} 结账时输入优惠码 <code style="font-size: 1.05rem; font-weight: bold; background: rgba(245, 158, 11, 0.2); padding: 0.2rem 0.6rem; border-radius: 4px; border: 1px solid #f59e0b; color: #fbbf24;">${airport.coupon}</code> 即可享受立减折扣！
               <button class="btn btn-secondary btn-sm coupon-copy-btn" data-coupon="${airport.coupon}" style="margin-left: 0.5rem; padding: 0.2rem 0.6rem;">点击复制</button>
             </div>` : ''}
 
@@ -1549,28 +1549,28 @@ function generateReviewPages() {
             <h2>第三章：晚高峰（20:30 - 22:30）三网真实网络性能实测看板</h2>
             <p>为了客观检验 ${airport.name} 在网络用网最高峰期的承载能力，我们在中国电信、中国联通和中国移动千兆宽带环境下，分别进行了 72 小时连续网络抽检，汇总真实数据如下：</p>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.25rem 0;">
-              <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
-                <div style="font-weight: 700; color: #1e3a8a; font-size: 1.05rem; margin-bottom: 0.5rem;">🇨🇳 中国电信 (1000M)</div>
+              <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+                <div style="font-weight: 700; color: #38bdf8; font-size: 1.05rem; margin-bottom: 0.5rem;">🇨🇳 中国电信 (1000M)</div>
                 <div style="font-size: 0.9rem; line-height: 1.7;">
-                  下行峰值带宽: <strong style="color: #065f46;">${detail.speedMetrics.telecom.dl}</strong><br>
+                  下行峰值带宽: <strong style="color: #34d399;">${detail.speedMetrics.telecom.dl}</strong><br>
                   平均网络延迟: <strong>${detail.speedMetrics.telecom.ping}</strong><br>
                   实测丢包率: <strong>${detail.speedMetrics.telecom.loss}</strong><br>
                   网络抖动 (Jitter): <strong>${detail.speedMetrics.telecom.jitter}</strong>
                 </div>
               </div>
-              <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
-                <div style="font-weight: 700; color: #1e3a8a; font-size: 1.05rem; margin-bottom: 0.5rem;">🇨🇳 中国联通 (1000M)</div>
+              <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+                <div style="font-weight: 700; color: #38bdf8; font-size: 1.05rem; margin-bottom: 0.5rem;">🇨🇳 中国联通 (1000M)</div>
                 <div style="font-size: 0.9rem; line-height: 1.7;">
-                  下行峰值带宽: <strong style="color: #065f46;">${detail.speedMetrics.unicom.dl}</strong><br>
+                  下行峰值带宽: <strong style="color: #34d399;">${detail.speedMetrics.unicom.dl}</strong><br>
                   平均网络延迟: <strong>${detail.speedMetrics.unicom.ping}</strong><br>
                   实测丢包率: <strong>${detail.speedMetrics.unicom.loss}</strong><br>
                   网络抖动 (Jitter): <strong>${detail.speedMetrics.unicom.jitter}</strong>
                 </div>
               </div>
-              <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
-                <div style="font-weight: 700; color: #1e3a8a; font-size: 1.05rem; margin-bottom: 0.5rem;">🇨🇳 中国移动 (1000M)</div>
+              <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem;">
+                <div style="font-weight: 700; color: #38bdf8; font-size: 1.05rem; margin-bottom: 0.5rem;">🇨🇳 中国移动 (1000M)</div>
                 <div style="font-size: 0.9rem; line-height: 1.7;">
-                  下行峰值带宽: <strong style="color: #065f46;">${detail.speedMetrics.mobile.dl}</strong><br>
+                  下行峰值带宽: <strong style="color: #34d399;">${detail.speedMetrics.mobile.dl}</strong><br>
                   平均网络延迟: <strong>${detail.speedMetrics.mobile.ping}</strong><br>
                   实测丢包率: <strong>${detail.speedMetrics.mobile.loss}</strong><br>
                   网络抖动 (Jitter): <strong>${detail.speedMetrics.mobile.jitter}</strong>
