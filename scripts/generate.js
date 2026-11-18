@@ -301,14 +301,14 @@ function generateHomepage() {
     </section>
 
     <!-- Section 7: 机场横向比较系统入口 -->
-    <section class="card" style="background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); color: #ffffff; padding: 2.5rem; margin: 3.5rem 0; border: none;">
+    <section class="card" style="background: rgba(13, 20, 36, 0.85); border: 2px solid rgba(56, 189, 248, 0.4); backdrop-filter: blur(18px); padding: 2.5rem; margin: 3.5rem 0; box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.45), 0 0 25px rgba(0, 240, 255, 0.15);">
       <div style="max-width: 800px;">
-        <span class="badge" style="background: rgba(255,255,255,0.2); color: #fff; margin-bottom: 1rem;">独家在线工具</span>
-        <h2 style="color: #ffffff; font-size: 1.85rem; margin-bottom: 1rem; border: none; padding: 0;">还在纠结选哪家？使用机场多维度横向在线对比工具</h2>
-        <p style="color: #bfdbfe; font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.75rem;">
+        <span class="badge badge-primary" style="margin-bottom: 1rem;">独家在线工具</span>
+        <h2 style="color: #f8fafc; font-size: 1.85rem; margin-bottom: 1rem; border: none; padding: 0;">还在纠结选哪家？使用机场多维度横向在线对比工具</h2>
+        <p style="color: #cbd5e1; font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.75rem;">
           支持自由选择 2 到 4 家机场品牌，全自动展开价格、真实单价、节点覆盖地区、协议兼容、设备连接上限及流媒体/AI支持差异，让参数一览无余。
         </p>
-        <a href="${relPrefix}compare/index.html" class="btn" style="background-color: #ffffff; color: #1e3a8a; font-weight: 700; padding: 0.75rem 1.75rem;">立即进入机场对比工具 &rarr;</a>
+        <a href="${relPrefix}compare/index.html" class="btn btn-primary btn-lg">立即进入机场对比工具 &rarr;</a>
       </div>
     </section>
 
