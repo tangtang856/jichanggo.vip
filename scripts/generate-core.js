@@ -116,7 +116,6 @@ function renderFooter(relPrefix) {
             <li><a href="${relPrefix}contact/index.html">联系我们与商务反馈</a></li>
             <li><a href="${relPrefix}privacy-policy/index.html">隐私权保护政策</a></li>
             <li><a href="${relPrefix}disclaimer/index.html">法律免责声明</a></li>
-            <li><a href="${relPrefix}sitemap.xml">XML 网站地图</a></li>
           </ul>
         </div>
       </div>
