@@ -1101,6 +1101,103 @@ pre code {
   font-weight: 700;
 }
 
+/* ==========================================================================
+   FAQ Question & Answer Card System (Dark Frosted Glass)
+   ========================================================================== */
+.faq-list, .faq-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.faq-item {
+  background: rgba(13, 20, 36, 0.78) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(56, 189, 248, 0.22) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 1.35rem 1.6rem !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all var(--transition-fast);
+}
+
+.faq-item:hover {
+  border-color: rgba(56, 189, 248, 0.55) !important;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45), 0 0 20px rgba(0, 240, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.faq-question {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #ffffff !important;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  line-height: 1.5;
+}
+
+.faq-question::before {
+  content: "Q";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(14, 165, 233, 0.22);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.faq-item h4 {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #38bdf8 !important;
+  margin-bottom: 0.65rem;
+  line-height: 1.5;
+}
+
+.faq-answer {
+  color: #cbd5e1 !important;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  padding-left: 2.1rem;
+  margin: 0;
+}
+
+.faq-answer strong {
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.faq-item p {
+  color: #cbd5e1 !important;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.faq-item p strong {
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .faq-item {
+    padding: 1.1rem 1.15rem !important;
+  }
+  .faq-answer {
+    padding-left: 0;
+    margin-top: 0.5rem;
+  }
+}
+
 /* Sidebar */
 .sidebar {
   display: flex;
